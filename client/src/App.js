@@ -2,6 +2,7 @@ import { Route, Switch } from "react-router-dom";
 
 import About from "./pages/About";
 import Home from "./pages/Home";
+import ResultsTable from "./pages/ResultsTable";
 
 const App = () => (
 	<Switch>
@@ -10,6 +11,9 @@ const App = () => (
 		</Route>
 		<Route path="/about/this/site">
 			<About />
+		</Route>
+		<Route path="/table">
+			<ResultsTable />
 		</Route>
 	</Switch>
 );

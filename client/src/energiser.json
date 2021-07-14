@@ -1,0 +1,40 @@
+[{
+    "name": "Favorite Animal",
+    "urls": "",
+    "time": "45 seconds each",
+    "id": 1,
+    "description":
+        "Go round the group, everyone says there favorite animal and why then popcorns to the next person."
+},
+{
+    "name": "Story round the circle",
+    "urls": "",
+    "time": "45 seconds each",
+    "id": 2,
+    "description":
+        "Create a story going around the group. Each person adds a sentence then popcorns to the next. An example starter sentence might be, You wash up on an unfamiliar beach, confused as to how you have arrived there. You hear a rustling sound coming from the bushes at the edge of the beach. You look up and see...."
+},
+{
+    "name": "Group Counting",
+    "urls": "",
+    "time": "Hard to say :)",
+    "id": 3,
+    "description":
+        "As a group try to count to 10. Rules: Maximum one number each. Order can't be premeditated. If two people speak at the same time, start again."
+},
+{
+    "name": "Three Wishes",
+    "urls": "",
+    "time": "10 minutes total",
+    "id": 4,
+    "description":
+        "Add gifs to a thread representing your three wishes, your colleagues then need to guess what it is."
+},
+{
+    "name": "Time Machine",
+    "urls": "",
+    "time": "45 seconds each",
+    "id": 5,
+    "description":
+        "Simple group discussion, if you could go back or forward in time, when/where would you go to and why."
+}]
