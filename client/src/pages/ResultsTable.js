@@ -27,8 +27,8 @@ const ResultsTable = () => {
             <td>Tags</td>
             <td>Time Limit</td>
             <td>URLs</td>
-            <td>Upvotes</td>
-            <td>Downvotes</td>
+            {/* <td>Upvotes</td>
+            <td>Downvotes</td> */}
             </thead>
             {shuffle(data).map((item, index)=>
             <tbody key={index}>
@@ -38,8 +38,8 @@ const ResultsTable = () => {
             <td>Test</td>
             <td>{item.time}</td>
             <td>http//:</td>
-            <td>150</td>
-            <td>30</td>
+            {/* <td>150</td>
+            <td>30</td> */}
             </tr>
             </tbody>
         )}

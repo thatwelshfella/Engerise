@@ -36,7 +36,7 @@ export function Home() {
 					{message}
 				</h1>
 				<Link to="/about/this/site">About</Link>
-				<Link to="/results">ResultsTable</Link>
+				<Link to="/results">Table</Link>
 			</div>
 		</main>
 	);

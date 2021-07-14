@@ -12,7 +12,7 @@ const App = () => (
 		<Route path="/about/this/site">
 			<About />
 		</Route>
-		<Route path="/table">
+		<Route path="/results">
 			<ResultsTable />
 		</Route>
 	</Switch>
