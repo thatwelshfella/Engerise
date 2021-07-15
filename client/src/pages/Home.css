@@ -1,11 +1,30 @@
+body{
+	background-color: #94d2bd;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	color: #ee9b00	;
+}
+
+.top-div{
+	background-color: #005f73;
+	height: 60rem;
+}
+
+header{
+	height: 8rem;
+}
+
+.generate_btn{
+	margin-left: 50rem;
+}
+
 .logo {
 	width: 100px;
 }
 
 .message {
-	color: blue;
+	color: #3a0ca3;
 }
 
 .message:hover {
-	background-color: yellow;
+	background-color: #3f37c9;
 }
