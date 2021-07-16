@@ -2,8 +2,9 @@ import React from "react";
 import data from "../energiser.json";
 import { Link } from "react-router-dom";
 
-
 const ResultsTable = () => {
+
+	//Random function
 	const shuffle = (arr) => {
 		const newArr = arr.slice();
 		for (let i = newArr.length - 1; i > 0; i--) {
@@ -34,7 +35,17 @@ const ResultsTable = () => {
 						<tr>
 							<td>{item.id}</td>
 							<td>
-								<Link to={{ pathname:`/description/${item.id}` }}>{item.name}</Link>
+								<Link
+									to={{
+										pathname: `/description/${item.id}`,
+										name: item.name,
+                                        id: item.id,
+                                        description: item.description,
+                                        time: item.time
+									}}
+								>
+									{item.name}
+								</Link>
 							</td>
 							<td>Test</td>
 							<td>{item.time}</td>

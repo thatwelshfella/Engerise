@@ -18,8 +18,7 @@ const App = () => (
 		<Route path="/description" exact>
 			<Description />
 		</Route>
-		<Route path="/description/:id">
-			<Description />
+		<Route path="/description/:id" component={Description}>
 		</Route>
 	</Switch>
 );
