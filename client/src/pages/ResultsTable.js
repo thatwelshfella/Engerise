@@ -1,5 +1,5 @@
 import React from "react";
-import data from "../energiser.json";
+import data from "../data/energiser.json";
 import { Link } from "react-router-dom";
 
 const ResultsTable = () => {
