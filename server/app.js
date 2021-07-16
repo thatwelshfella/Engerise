@@ -1,7 +1,6 @@
 import express from "express";
 import morgan from "morgan";
 import path from "path";
-
 import router from "./api";
 import {
 	configuredHelmet,
