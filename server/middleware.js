@@ -1,6 +1,5 @@
 import helmet from "helmet";
 import path from "path";
-
 export const configuredHelmet = () =>
 	helmet({
 		contentSecurityPolicy: {
