@@ -14,14 +14,14 @@ const ResultsTable = () => {
 		return newArr;
 	};
 
-	const style = {
-		height: "1000px",
-	};
+	// const style = {
+	// 	height: "1000px",
+	// };
 	return (
-		<div className="bg-dark pt-4" style={style}>
-			<h1 className="text-center text-white p-4">RESULTS TABLE</h1>
-			<table className="container table table-success table-striped">
-				<thead className="font-weight-bold">
+		<div className="res-div pt-4">
+			<h1 className="text-center p-4">RESULTS TABLE</h1>
+			<table className="container table table-success">
+				<thead className="font-weight-bold result-thead">
 					<td>ID</td>
 					<td>Name of Energiser</td>
 					<td>Tags</td>
@@ -31,7 +31,7 @@ const ResultsTable = () => {
             <td>Downvotes</td> */}
 				</thead>
 				{shuffle(data).map((item) => (
-					<tbody key={item.id}>
+					<tbody className="result-tbody" key={item.id}>
 						<tr>
 							<td>{item.id}</td>
 							<td>
@@ -41,8 +41,7 @@ const ResultsTable = () => {
 										name: item.name,
                                         id: item.id,
                                         description: item.description,
-                                        time: item.time
-									}}
+                                        time: item.time	}}
 								>
 									{item.name}
 								</Link>

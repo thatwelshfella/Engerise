@@ -13,18 +13,27 @@ function backButtonClicked(){
 	return (
 		<div className="container-fluid">
 			<div className="col">
-				<div className="h3 p-3 bg-success text-white text-center">
+				<div className="h3 p-3 desc-div text-center">
 					Energiser Name : {props.location.name}
 				</div>
-				<div className="mt-1 text-center">
+				<div>
+					<hr></hr>
+				</div>
+				<div className="mt-1 detail-div text-center">
 					Time per person : {props.location.time}
 				</div>
-				<div className="mt-1 text-center">
+				<div>
+					<hr></hr>
+				</div>
+				<div className="mt-1 detail-div text-center">
 					Description : {props.location.description}
 				</div>
-				<div className="mt-3 text-center">
+				<div>
+					<hr></hr>
+				</div>
+				<div className="mt-3 detail-div text-center">
 					<Link to="/results">
-						<button onClick={backButtonClicked}>BACK</button>
+						<button className="generate_btn" onClick={backButtonClicked}>BACK</button>
 					</Link>
 				</div>
 			</div>
