@@ -14,7 +14,7 @@ const pool = new Pool({
 	database: "d14rss3o9u0mq7",
 	password: "1a3340862ae23fb0dfba7f1eedca969c87ffd5cc2ededb00189d1ea503f8741c",
 	port: 5432,
-	sslmode: require
+	ssl: { rejectUnauthorized: false },
 });
 
 router.get("/wholelist", function (req, res) {
