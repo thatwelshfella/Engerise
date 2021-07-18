@@ -13,6 +13,7 @@ server.on("listening", () => {
 	console.log(`Listening on ${bind}`);
 });
 
+
 process.on("SIGTERM", () => server.close(() => disconnectDb()));
 
 connectDb().then(() => server.listen(port));
