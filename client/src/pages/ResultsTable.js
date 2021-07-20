@@ -32,7 +32,7 @@ useEffect(() => {
 					<td>Name of Energiser</td>
 					<td>Difficulty</td>
 					<td>Time Limit</td>
-					{/* <td>URLs</td> */}
+					<td>External Site</td>
 					<td>Upvotes</td>
 					<td>Downvotes</td>
 				</thead>
@@ -57,7 +57,13 @@ useEffect(() => {
 								<button className="tag">{item.tag}</button>
 							</td>
 							<td>{item.time}</td>
-							{/* <td>http//:</td> */}
+							<td>
+								{item.external ? (
+									<button>Yes</button>
+								) : (
+									<button>No</button>
+								)}
+							</td>
 							<td>150</td>
 							<td>30</td>
 						</tr>
