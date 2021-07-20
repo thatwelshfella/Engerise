@@ -1,5 +1,5 @@
 import { Router } from "express";
-import db from "./db";
+require("dotenv").config();
 
 const router = new Router();
 router.get("/", (_, res) => {
@@ -7,14 +7,11 @@ router.get("/", (_, res) => {
 });
 
 const { Pool } = require("pg");
+const dbUrl = process.env.DATABASE_URL;
 
 const pool = new Pool({
-	driver: "postgres",
-	user: "eafodoyqputjhw",
-	host: "ec2-79-125-30-28.eu-west-1.compute.amazonaws.com",
-	database: "d14rss3o9u0mq7",
-	password: "PUT_PASSWORD_HERE",
-	port: 5432,
+	connectionString: dbUrl,
+	connectionTimeoutMillis: 5000,
 	ssl: { rejectUnauthorized: false },
 });
 
