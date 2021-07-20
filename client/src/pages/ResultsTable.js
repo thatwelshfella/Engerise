@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const ResultsTable = () => {
-
+const ResultsTable = (props) => {
+console.log(props);
 const [energiser, setEnergiser] = useState([]);
 
+props.location.api ? null : props.location.api = `/api/wholelist`;
+
 useEffect(() => {
-	fetch(`/api/wholelist`)
+	fetch(props.location.api)
 	.then(res => res.json())
 	.then(data => {setEnergiser(data)
 	});
