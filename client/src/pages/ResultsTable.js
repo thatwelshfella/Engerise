@@ -5,7 +5,7 @@ const ResultsTable = (props) => {
 	console.log(props);
 	const [energiser, setEnergiser] = useState([]);
 
-	props.location.api ? null : (props.location.api = `/api/wholelist`);
+	props.location.api ? null : (props.location.api = "/api/wholelist");
 
 	useEffect(() => {
 		fetch(props.location.api)
@@ -13,7 +13,7 @@ const ResultsTable = (props) => {
 			.then((data) => {
 				setEnergiser(data);
 			});
-	}, []);
+	},[]);
 
 	//Random function
 	const shuffle = (arr) => {

@@ -13,8 +13,8 @@ function GenerateDiv() {
 				<Link
 					className="btn btn-secondary btn-sm"
 					to={{
-						pathname: `/results`,
-						api: `/api/easy`,
+						pathname: "/results",
+						api: "/api/easy",
 					}}
 				>
 					Easy
@@ -22,8 +22,8 @@ function GenerateDiv() {
 				<Link
 					className="btn btn-secondary btn-sm"
 					to={{
-						pathname: `/results`,
-						api: `/api/medium`,
+						pathname: "/results",
+						api: "/api/medium",
 					}}
 				>
 					Medium
@@ -31,8 +31,8 @@ function GenerateDiv() {
 				<Link
 					className="btn btn-secondary btn-sm"
 					to={{
-						pathname: `/results`,
-						api: `/api/difficult`,
+						pathname: "/results",
+						api: "/api/difficult",
 					}}
 				>
 					Difficult
@@ -40,8 +40,8 @@ function GenerateDiv() {
 				<Link
 					className="btn btn-secondary btn-sm"
 					to={{
-						pathname: `/results`,
-						api: `/api/external`,
+						pathname: "/results",
+						api: "/api/external",
 					}}
 				>
 					External Link
@@ -49,8 +49,8 @@ function GenerateDiv() {
 				<Link
 					className="btn btn-secondary btn-sm"
 					to={{
-						pathname: `/results`,
-						api: `/api/internal`,
+						pathname: "/results",
+						api: "/api/internal",
 					}}
 				>
 					Not External
@@ -58,8 +58,8 @@ function GenerateDiv() {
 				<Link
 					className="btn btn-secondary btn-sm"
 					to={{
-						pathname: `/results`,
-						api: `/api/5minutes`,
+						pathname: "/results",
+						api: "/api/5minutes",
 					}}
 				>
 					5 Minutes
@@ -67,8 +67,8 @@ function GenerateDiv() {
 				<Link
 					className="btn btn-secondary btn-sm"
 					to={{
-						pathname: `/results`,
-						api: `/api/10minutes`,
+						pathname: "/results",
+						api: "/api/10minutes",
 					}}
 				>
 					10 Minutes
@@ -76,8 +76,8 @@ function GenerateDiv() {
 				<Link
 					className="btn btn-secondary btn-sm"
 					to={{
-						pathname: `/results`,
-						api: `/api/15minutes`,
+						pathname: "/results",
+						api: "/api/15minutes",
 					}}
 				>
 					15 Minutes
@@ -85,8 +85,8 @@ function GenerateDiv() {
 				<Link
 					className="btn btn-primary generate_btn"
 					to={{
-						pathname: `/results`,
-						api: `/api/wholelist`,
+						pathname: "/results",
+						api: "/api/wholelist",
 					}}
 				>
 					Generate Energiser
