@@ -44,6 +44,27 @@ router.get("/difficult", function (req, res) {
 		.catch((e) => console.error(e));
 });
 
+router.get("/5minutes", function (req, res) {
+	pool
+		.query("SELECT * FROM energisers WHERE time = '5 Minutes'")
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+
+router.get("/10minutes", function (req, res) {
+	pool
+		.query("SELECT * FROM energisers WHERE time = '10 Minutes'")
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+
+router.get("/15minutes", function (req, res) {
+	pool
+		.query("SELECT * FROM energisers WHERE time = '15 Minutes'")
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+
 router.get("/internal", function (req, res) {
 	pool
 		.query("SELECT * FROM energisers WHERE external = false")

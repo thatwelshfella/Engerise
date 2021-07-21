@@ -2,18 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const ResultsTable = (props) => {
-console.log(props);
-const [energiser, setEnergiser] = useState([]);
+	console.log(props);
+	const [energiser, setEnergiser] = useState([]);
 
-props.location.api ? null : props.location.api = `/api/wholelist`;
+	props.location.api ? null : (props.location.api = `/api/wholelist`);
 
-useEffect(() => {
-	fetch(props.location.api)
-	.then(res => res.json())
-	.then(data => {setEnergiser(data)
-	});
-}, []);
-
+	useEffect(() => {
+		fetch(props.location.api)
+			.then((res) => res.json())
+			.then((data) => {
+				setEnergiser(data);
+			});
+	}, []);
 
 	//Random function
 	const shuffle = (arr) => {
@@ -33,7 +33,7 @@ useEffect(() => {
 					{/* <td>ID</td> */}
 					<td>Name of Energiser</td>
 					<td>Difficulty</td>
-					<td>Time Limit</td>
+					<td>Recommended Time</td>
 					<td>External Site</td>
 					<td>Upvotes</td>
 					<td>Downvotes</td>
@@ -58,13 +58,11 @@ useEffect(() => {
 							<td>
 								<button className="tag">{item.tag}</button>
 							</td>
-							<td>{item.time}</td>
 							<td>
-								{item.external ? (
-									<button>Yes</button>
-								) : (
-									<button>No</button>
-								)}
+								<button className="tag">{item.time}</button>
+							</td>
+							<td>
+								{item.external ? <button>Yes</button> : <button>No</button>}
 							</td>
 							<td>150</td>
 							<td>30</td>

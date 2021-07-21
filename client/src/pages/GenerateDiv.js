@@ -41,6 +41,15 @@ function GenerateDiv() {
 					className="btn btn-secondary btn-sm"
 					to={{
 						pathname: `/results`,
+						api: `/api/external`,
+					}}
+				>
+					External Link
+				</Link>{" "}
+				<Link
+					className="btn btn-secondary btn-sm"
+					to={{
+						pathname: `/results`,
 						api: `/api/internal`,
 					}}
 				>
@@ -50,10 +59,28 @@ function GenerateDiv() {
 					className="btn btn-secondary btn-sm"
 					to={{
 						pathname: `/results`,
-						api: `/api/external`,
+						api: `/api/5minutes`,
 					}}
 				>
-					External Link
+					5 Minutes
+				</Link>{" "}
+				<Link
+					className="btn btn-secondary btn-sm"
+					to={{
+						pathname: `/results`,
+						api: `/api/10minutes`,
+					}}
+				>
+					10 Minutes
+				</Link>{" "}
+				<Link
+					className="btn btn-secondary btn-sm"
+					to={{
+						pathname: `/results`,
+						api: `/api/15minutes`,
+					}}
+				>
+					15 Minutes
 				</Link>{" "}
 				<Link
 					className="btn btn-primary generate_btn"
