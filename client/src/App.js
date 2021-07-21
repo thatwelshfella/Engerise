@@ -15,8 +15,7 @@ const App = () => (
 		<Route path="/about/this/site">
 			<About />
 		</Route>
-		<Route path="/results">
-			<ResultsTable />
+		<Route path="/results" component={ResultsTable}>
 		</Route>
 		<Route path="/description" exact>
 			<Description />
