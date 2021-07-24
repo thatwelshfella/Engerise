@@ -78,6 +78,14 @@ router.get("/external", function (req, res) {
 		.then((result) => res.json(result.rows))
 		.catch((e) => console.error(e));
 });
+router.get("/favourites", function (req, res) {
+	pool
+		.query(
+			"SELECT *, (upvote + downvote) as OrderCondition FROM energisers ORDER BY OrderCondition DESC LIMIT 10"
+		)
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
 
 
 export default router;
