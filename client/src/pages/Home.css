@@ -61,3 +61,7 @@ h1{
 .message:hover {
 	background-color: #3f37c9;
 }
+
+.set-pointer {
+	cursor: pointer;
+  }
