@@ -7,6 +7,8 @@ function Description(props) {
 	const [upvote, setUpvote] = useState(props.location.upvote);
 	const [downvote, setDownvote] = useState(props.location.downvote);
 
+	console.log("props",props.location);
+
 	// increment upvote function
 	const incrementCounter = ()=>{
 		setUpvote(upvote + 1);

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import RowTable from "./RowTable";
 
 const ResultsTable = (props) => {
-	console.log(props);
 	const [energiser, setEnergiser] = useState([]);
+	const [sorted, setSorted] = useState(0);
 
 	props.location.api ? null : (props.location.api = "/api/wholelist");
 
@@ -11,7 +12,16 @@ const ResultsTable = (props) => {
 		fetch(props.location.api)
 			.then((res) => res.json())
 			.then((data) => {
-				setEnergiser(data);
+				if (props.location.api === "/api/wholelist" && (props.location.searchCriteria !== "undefined" || props.location.searchCriteria !== ""))
+				{
+					let serachData = data.filter(
+						sd =>
+						sd.name.toLowerCase().includes(props.location.searchCriteria.toLowerCase())
+					);
+					setEnergiser(serachData);
+				}
+				else
+				  setEnergiser(data);
 			});
 	},[]);
 
@@ -25,6 +35,43 @@ const ResultsTable = (props) => {
 		return newArr;
 	};
 
+	// const [dataTable, setDataTable] = useState(shuffle(energiser));
+
+	function sortNum(event) {
+		let sortedEn = shuffle(energiser);
+		console.log(energiser);
+		if (sorted % 2 === 0) {
+			if (event.target.innerText === "Name of Energiser")
+			setEnergiser(
+				shuffle(sortedEn)
+				.sort((a, b) => (a.name > b.name) - (a.name < b.name))
+				.reverse()
+			);
+		else if (event.target.innerText === "Difficulty")
+		setEnergiser(
+			sortedEn
+				.sort((a, b) => (a.tag > b.tag) - (a.tag < b.tag))
+				.reverse()
+			);
+		else if (event.target.innerText === "Recommended Time")
+		setEnergiser(sortedEn.sort((a, b) => (a.time > b.time) - (a.time < b.time)).reverse());
+
+		} else {
+			if (event.target.innerText === "Name of Energiser")
+			setEnergiser(
+				sortedEn.sort((a, b) => (a.name > b.name) - (a.name < b.name))
+			);
+			else if (event.target.innerText === "Difficulty")
+			setEnergiser(
+				sortedEn.sort((a, b) => (a.tag > b.tag) - (a.tag < b.tag))
+			);
+			else if (event.target.innerText === "Recommended Time")
+			setEnergiser(sortedEn.sort((a, b) => (a.time > b.time) - (a.time < b.time)));
+		}
+		setSorted(sorted + 1);
+		console.log(energiser);
+	}
+
 	return (
 		<div className="res-div pt-4">
 			<div className="mt-3 detail-div text-center">
@@ -36,44 +83,17 @@ const ResultsTable = (props) => {
 			<table className="container table table-success">
 				<thead className="font-weight-bold result-thead">
 					{/* <td>ID</td> */}
-					<td>Name of Energiser</td>
-					<td>Difficulty</td>
-					<td>Recommended Time</td>
-					<td>External Site</td>
-					<td>Upvotes</td>
-					<td>Downvotes</td>
+					<th className="set-pointer" scope="col" onClick={sortNum}>Name of Energiser</th>
+					<th className="set-pointer" scope="col" onClick={sortNum}>Difficulty</th>
+					<th className="set-pointer" scope="col" onClick={sortNum}>Recommended Time</th>
+					<th>External Site</th>
+					<th className="set-pointer" scope="col" onClick={sortNum}>Upvotes</th>
+					<th className="set-pointer" scope="col" onClick={sortNum}>Downvotes</th>
+					<th className="set-pointer" scope="col" onClick={sortNum}>Favorite</th>
 				</thead>
-				{shuffle(energiser).map((item) => (
+				{energiser.map((item) => (
 					<tbody className="result-tbody" key={item.id}>
-						<tr>
-							{/* <td>{item.id}</td> */}
-							<td>
-								<Link
-									to={{
-										pathname: `/description/${item.id}`,
-										name: item.name,
-										id: item.id,
-										description: item.description,
-										time: item.time,
-										upvote: item.upvote,
-										downvote: item.downvote,
-									}}
-								>
-									{item.name}
-								</Link>
-							</td>
-							<td>
-								<td className="tag">{item.tag}</td>
-							</td>
-							<td>
-								<td className="tag">{item.time}</td>
-							</td>
-							<td>
-								{item.external ? <td>Yes</td> : <td>No</td>}
-							</td>
-							<td>{item.upvote}</td>
-							<td>{item.downvote}</td>
-						</tr>
+						 <RowTable energiser={item} />
 					</tbody>
 				))}
 			</table>
