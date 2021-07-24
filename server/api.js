@@ -1,5 +1,5 @@
 import { Router } from "express";
-import db from "./db";
+require("dotenv").config();
 
 const router = new Router();
 router.get("/", (_, res) => {
@@ -7,14 +7,11 @@ router.get("/", (_, res) => {
 });
 
 const { Pool } = require("pg");
+const dbUrl = process.env.DATABASE_URL;
 
 const pool = new Pool({
-	driver: "postgres",
-	user: "eafodoyqputjhw",
-	host: "ec2-79-125-30-28.eu-west-1.compute.amazonaws.com",
-	database: "d14rss3o9u0mq7",
-	password: "PUT_PASSWORD_HERE",
-	port: 5432,
+	connectionString: dbUrl,
+	connectionTimeoutMillis: 5000,
 	ssl: { rejectUnauthorized: false },
 });
 
@@ -24,6 +21,62 @@ router.get("/wholelist", function (req, res) {
 		.then((result) => res.json(result.rows))
 		.catch((e) => console.error(e));
 
+});
+
+router.get("/easy", function (req, res) {
+	pool
+		.query("SELECT * FROM energisers WHERE tag = 'Easy'")
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+
+router.get("/medium", function (req, res) {
+	pool
+		.query("SELECT * FROM energisers WHERE tag = 'Medium'")
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+
+router.get("/difficult", function (req, res) {
+	pool
+		.query("SELECT * FROM energisers WHERE tag = 'Difficult'")
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+
+router.get("/5minutes", function (req, res) {
+	pool
+		.query("SELECT * FROM energisers WHERE time = '5 Minutes'")
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+
+router.get("/10minutes", function (req, res) {
+	pool
+		.query("SELECT * FROM energisers WHERE time = '10 Minutes'")
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+
+router.get("/15minutes", function (req, res) {
+	pool
+		.query("SELECT * FROM energisers WHERE time = '15 Minutes'")
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+
+router.get("/internal", function (req, res) {
+	pool
+		.query("SELECT * FROM energisers WHERE external = false")
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+
+router.get("/external", function (req, res) {
+	pool
+		.query("SELECT * FROM energisers WHERE external = true")
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
 });
 
 

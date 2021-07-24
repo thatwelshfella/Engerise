@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 
 function Description(props) {
 
+	const [upvote, setUpvote] = useState(props.location.upvote);
+	const [downvote, setDownvote] = useState(props.location.downvote);
 
-    //function for back button to be added
+	// increment upvote function
+	const incrementCounter = ()=>{
+		setUpvote(upvote + 1);
+	};
+
+	// decrement downvote function
+	const decrementCounter = ()=>{
+		setDownvote(downvote - 1);
+	};
+
+    // function for back button to be added
 function backButtonClicked(){
     console.log("Back Button Clicked");
 }
@@ -30,6 +43,14 @@ function backButtonClicked(){
 				</div>
 				<div>
 					<hr></hr>
+				</div>
+				<div className="d-flex align-items-center">
+					<FaThumbsUp onClick={incrementCounter}></FaThumbsUp>
+					<p className="m-2">{upvote}</p>
+				</div>
+				<div className="d-flex align-items-center">
+					<FaThumbsDown onClick={decrementCounter}></FaThumbsDown>
+					<p className="m-2">{downvote}</p>
 				</div>
 				<div className="mt-3 detail-div text-center">
 					<Link to="/results">

@@ -1,8 +1,6 @@
 import GenerateDiv from "./GenerateDiv";
 import React from "react";
-
-// import energiser from "../data/energiser.json";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./Home.css";
 
 export function Home() {

@@ -1,7 +1,7 @@
 import { Pool } from "pg";
+require("dotenv").config();
 
-const dbUrl =
-	"postgres://eafodoyqputjhw:PUT_PASSWORD_HERE@ec2-79-125-30-28.eu-west-1.compute.amazonaws.com:5432/d14rss3o9u0mq7";
+const dbUrl = process.env.DATABASE_URL;
 
 const pool = new Pool({
 	connectionString: dbUrl,
