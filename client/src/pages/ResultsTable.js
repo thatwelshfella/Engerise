@@ -5,7 +5,7 @@ const ResultsTable = (props) => {
 	console.log(props);
 	const [energiser, setEnergiser] = useState([]);
 
-	props.location.api ? null : (props.location.api = `/api/wholelist`);
+	props.location.api ? null : (props.location.api = "/api/wholelist");
 
 	useEffect(() => {
 		fetch(props.location.api)
@@ -13,7 +13,7 @@ const ResultsTable = (props) => {
 			.then((data) => {
 				setEnergiser(data);
 			});
-	}, []);
+	},[]);
 
 	//Random function
 	const shuffle = (arr) => {
@@ -27,6 +27,11 @@ const ResultsTable = (props) => {
 
 	return (
 		<div className="res-div pt-4">
+			<div className="mt-3 detail-div text-center">
+					<Link to="/">
+						<button className="generate_btn">BACK</button>
+					</Link>
+				</div>
 			<h1 className="text-center p-4">RESULTS TABLE</h1>
 			<table className="container table table-success">
 				<thead className="font-weight-bold result-thead">
@@ -50,22 +55,24 @@ const ResultsTable = (props) => {
 										id: item.id,
 										description: item.description,
 										time: item.time,
+										upvote: item.upvote,
+										downvote: item.downvote,
 									}}
 								>
 									{item.name}
 								</Link>
 							</td>
 							<td>
-								<button className="tag">{item.tag}</button>
+								<td className="tag">{item.tag}</td>
 							</td>
 							<td>
-								<button className="tag">{item.time}</button>
+								<td className="tag">{item.time}</td>
 							</td>
 							<td>
-								{item.external ? <button>Yes</button> : <button>No</button>}
+								{item.external ? <td>Yes</td> : <td>No</td>}
 							</td>
-							<td>150</td>
-							<td>30</td>
+							<td>{item.upvote}</td>
+							<td>{item.downvote}</td>
 						</tr>
 					</tbody>
 				))}
