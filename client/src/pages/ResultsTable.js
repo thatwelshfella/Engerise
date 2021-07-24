@@ -13,7 +13,10 @@ const ResultsTable = (props) => {
 		fetch(props.location.api)
 			.then((res) => res.json())
 			.then((data) => {
-				if (props.location.api === "/api/wholelist" && (props.location.searchCriteria !== "undefined" || props.location.searchCriteria !== ""))
+				if (props.location.api === "/api/wholelist" && props.location.searchCriteria == null ){
+					setEnergiser(data);
+				}
+				else if (props.location.api === "/api/wholelist" && (props.location.searchCriteria !== "undefined" || props.location.searchCriteria !== ""))
 				{
 					let serachData = data.filter(
 						sd =>
@@ -22,7 +25,7 @@ const ResultsTable = (props) => {
 					setEnergiser(serachData);
 				}
 				else
-				  setEnergiser(data);
+					setEnergiser(data);
 			});
 	},[]);
 
@@ -40,7 +43,6 @@ const ResultsTable = (props) => {
 
 	function sortNum(event) {
 		let sortedEn = shuffle(energiser);
-		console.log(energiser);
 		if (sorted % 2 === 0) {
 			if (event.target.innerText === "Name of Energiser")
 			setEnergiser(
@@ -56,7 +58,24 @@ const ResultsTable = (props) => {
 			);
 		else if (event.target.innerText === "Recommended Time")
 		setEnergiser(sortedEn.sort((a, b) => (a.time > b.time) - (a.time < b.time)).reverse());
-
+		else if (event.target.innerText === "Downvotes")
+		setEnergiser(
+			sortedEn
+				.sort((a, b) => a.downvote - b.downvote)
+				.reverse()
+			);
+			else if (event.target.innerText === "Upvotes")
+			setEnergiser(
+				sortedEn
+					.sort((a, b) => a.upvote - b.upvote)
+					.reverse()
+				);
+				// else if (event.target.innerText === "Favorite")
+				// setEnergiser(
+				// 	sortedEn
+				// 		.sort((a, b) => (a.value > b.value) - (a.value < b.value))
+				// 		.reverse()
+				// 	);
 		} else {
 			if (event.target.innerText === "Name of Energiser")
 			setEnergiser(
@@ -68,9 +87,23 @@ const ResultsTable = (props) => {
 			);
 			else if (event.target.innerText === "Recommended Time")
 			setEnergiser(sortedEn.sort((a, b) => (a.time > b.time) - (a.time < b.time)));
+			else if (event.target.innerText === "Downvotes")
+			setEnergiser(
+			sortedEn
+				.sort((a, b) => a.downvote - b.downvote)
+			);
+			else if (event.target.innerText === "Upvotes")
+			setEnergiser(
+				sortedEn
+					.sort((a, b) => a.upvote - b.upvote)
+				);
+				// else if (event.target.innerText === "Favorite")
+				// setEnergiser(
+				// 	sortedEn
+				// 		.sort((a, b) => (a.value > b.value) - (a.value < b.value))
+				// 	);
 		}
 		setSorted(sorted + 1);
-		console.log(energiser);
 	}
 	return (
 		<div className="res-div pt-4">
@@ -89,7 +122,7 @@ const ResultsTable = (props) => {
 					<th>External Site</th>
 					<th className="set-pointer" scope="col" onClick={sortNum}>Upvotes</th>
 					<th className="set-pointer" scope="col" onClick={sortNum}>Downvotes</th>
-					<th className="set-pointer" scope="col" onClick={sortNum}>Favorite</th>
+					<th>Favorite</th>
 				</thead>
 				{energiser.map((item) => (
 					<tbody className="result-tbody" key={item.id}>
