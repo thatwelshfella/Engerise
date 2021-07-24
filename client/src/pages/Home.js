@@ -1,6 +1,7 @@
 import GenerateDiv from "./GenerateDiv";
 import React from "react";
 import Tags from "./Tags";
+import TopEnergisers from "./TopEnergisers";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Home.css";
 
@@ -14,6 +15,11 @@ export function Home() {
 				<div className="row">
 					<Tags />
 					<GenerateDiv />
+					<br />
+					<div className="col-12 col-md-6"></div>
+					<div className="col-12 col-md-6">
+						<TopEnergisers />
+					</div>
 				</div>
 			</div>
 		</main>
