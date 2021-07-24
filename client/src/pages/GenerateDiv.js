@@ -100,6 +100,7 @@ const search = searchVal => {
             searchCriteria: searchRes,
 					}}
 				>Generate Energiser</Link>
+
 			</div>
 		</div>
 	);

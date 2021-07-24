@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import RowTable from "./RowTable";
 
 const ResultsTable = (props) => {
+
 	const [energiser, setEnergiser] = useState([]);
 	const [sorted, setSorted] = useState(0);
 
@@ -71,7 +72,6 @@ const ResultsTable = (props) => {
 		setSorted(sorted + 1);
 		console.log(energiser);
 	}
-
 	return (
 		<div className="res-div pt-4">
 			<div className="mt-3 detail-div text-center">
