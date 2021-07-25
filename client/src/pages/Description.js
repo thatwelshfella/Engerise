@@ -53,7 +53,11 @@ function backButtonClicked(){
 					<p className="m-2">{downvote}</p>
 				</div>
 				<div className="mt-3 detail-div text-center">
-					<Link to="/results">
+					<Link to={{
+						pathname: "/results",
+						api: "/api/wholelist",
+						searchCriteria: null,
+					}}>
 						<button className="generate_btn" onClick={backButtonClicked}>BACK</button>
 					</Link>
 				</div>
