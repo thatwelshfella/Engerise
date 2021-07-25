@@ -1,22 +1,23 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { FaHeart } from "react-icons/fa";
+import { BsFillHeartFill } from "react-icons/bs";
 
 function RowTable(props) {
 	const myObject = useRef(props.energiser.id);
 	let objetKey = "favicon" + myObject.current;
 	let currentFav = localStorage.getItem(objetKey);
 	const [myFavorite, setMyFavorite] = useState(currentFav);
+	const iconId = "favicon" + props.energiser.id;
 
-	function setFavorite(event) {
+	function setFavorite() {
 		if (typeof Storage !== "undefined") {
-			let currentFav = localStorage.getItem(event.target.id);
-			if (currentFav != "red") {
-				localStorage.setItem(event.target.id, "red");
+			let currentFav = localStorage.getItem(iconId);
+			if (currentFav !== "red") {
+				localStorage.setItem(iconId, "red");
 			} else {
-				localStorage.setItem(event.target.id, "black");
+				localStorage.setItem(iconId, "black");
 			}
-			currentFav = localStorage.getItem(event.target.id);
+			currentFav = localStorage.getItem(iconId);
 			setMyFavorite(currentFav);
 		} else {
 			document.getElementById("result").innerHTML =
@@ -49,8 +50,8 @@ function RowTable(props) {
 			<td>{props.energiser.upvote}</td>
 			<td>{props.energiser.downvote}</td>
 			<td>
-				<FaHeart
-					id={"favicon" + props.energiser.id}
+				<BsFillHeartFill
+					id={iconId}
 					value={localStorage.getItem(objetKey)}
 					style={{ color: myFavorite }}
 					onClick={setFavorite}
