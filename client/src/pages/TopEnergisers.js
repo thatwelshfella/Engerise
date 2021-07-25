@@ -16,7 +16,7 @@ const TopEnergisers = (props) => {
 	return (
 		<div className="pt-4">
             <br />
-			<h1 className="text-center p-4">Top Energisers</h1>
+			<h2 className="text-center p-4">Top Energisers</h2>
 			<table className="container table table-success">
 				<thead className="font-weight-bold result-thead">
 					{/* <td>ID</td> */}
