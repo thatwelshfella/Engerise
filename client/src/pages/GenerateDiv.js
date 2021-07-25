@@ -7,7 +7,7 @@ function GenerateDiv() {
 //   const [searchData, setSearchData] = useState(data);
 
 const [searchRes, setSearchRes] = useState("");
-const search = searchVal => {
+const search = (searchVal) => {
   setSearchRes(searchVal);
 };
 
@@ -92,6 +92,8 @@ const search = searchVal => {
 				>
 					15 Minutes
 				</Link>{" "}
+				<br></br>
+				<br></br>
         <Link
 					className="btn btn-primary generate_btn"
 					to={{

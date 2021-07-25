@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
+// import { FaHeart } from "react-icons/fa";
 
 function RowTable(props) {
 
@@ -46,7 +47,8 @@ function RowTable(props) {
                 {props.energiser.external ? <td>Yes</td> : <td>No</td>}
             <td>{props.energiser.upvote}</td>
             <td>{props.energiser.downvote}</td>
-            <td><i id={"favicon"+props.energiser.id} className="fas fa-heart" style={{color: myFavorite}} onClick={setFavorite} ref={myObject}></i></td>
+            <td><i id={"favicon"+props.energiser.id} value={localStorage.getItem(objetKey)} className="fas fa-heart" style={{color: myFavorite}} onClick={setFavorite} ref={myObject}></i></td>
+            {/* <td><FaHeart id={objetKey} style={{ color: myFavorite }} onClick={setFavorite} ref={myObject}></FaHeart></td> */}
             {/* <td>150</td>
         <td>30</td> */}
         </tr>
@@ -54,38 +56,3 @@ function RowTable(props) {
   );
 }
 export default RowTable;
-
-
-// // {shuffle(energiser).map((item) => (
-//     <tbody className="result-tbody" key={item.id}>
-//         <tr>
-//             {/* <td>{item.id}</td> */}
-//             <td>
-//                 <Link
-//                     to={{
-//                         pathname: `/description/${item.id}`,
-//                         name: item.name,
-//                         id: item.id,
-//                         description: item.description,
-//                         time: item.time,
-//                         upvote: item.upvote,
-//                         downvote: item.downvote,
-//                     }}
-//                 >
-//                     {item.name}
-//                 </Link>
-//             </td>
-//             <td>
-//                 <td className="tag">{item.tag}</td>
-//             </td>
-//             <td>
-//                 <td className="tag">{item.time}</td>
-//             </td>
-//             <td>
-//                 {item.external ? <td>Yes</td> : <td>No</td>}
-//             </td>
-//             <td>{item.upvote}</td>
-//             <td>{item.downvote}</td>
-//         </tr>
-//     </tbody>
-// // ))}
