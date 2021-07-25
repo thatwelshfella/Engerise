@@ -1,5 +1,13 @@
-# Starter Kit
+# Engerise!
 
+This project will allow trainees at code your future to choose an apporiate ice-breaker.
+Engerisers have time and difficulty assiocated with them, trainees can up and down votes engerise they like/dislike.
+## Developers
+
+Nigel Pelvin
+Daniel Ghanbari
+Ahmad Janah
+## tech stack
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 - [x] Full stack ES8+ with [Babel]
@@ -14,7 +22,6 @@
 - [x] [Cloud Foundry] deployment
 - [x] [Docker] build
 - [x] [Postgres] database with [node-postgres]
-
 ## Setup
 
 Pick one member of the team to own the repository and pipeline. That person should do the following:
