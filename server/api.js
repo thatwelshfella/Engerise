@@ -78,6 +78,21 @@ router.get("/external", function (req, res) {
 		.then((result) => res.json(result.rows))
 		.catch((e) => console.error(e));
 });
-
+router.get("/topEnergisers", function (req, res) {
+	pool
+		.query(
+			"SELECT *, (upvote + downvote) as OrderCondition FROM energisers ORDER BY OrderCondition DESC LIMIT 10"
+		)
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+router.get("/plus1", function (req, res) {
+	pool
+		.query(
+			"UPDATE energisers SET upvote = upvote + 1 WHERE id = 1"
+		)
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
 
 export default router;
