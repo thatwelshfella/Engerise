@@ -21,11 +21,11 @@ const TopEnergisers = (props) => {
 				<thead className="font-weight-bold result-thead">
 					{/* <td>ID</td> */}
 					<td>Name of Energiser</td>
-					<td>Difficulty</td>
+					{/* <td>Difficulty</td>
 					<td>Recommended Time</td>
 					<td>External Site</td>
 					<td>Upvotes</td>
-					<td>Downvotes</td>
+					<td>Downvotes</td> */}
 				</thead>
 				{energiser.map((item) => (
 					<tbody className="result-tbody" key={item.id}>
@@ -46,7 +46,7 @@ const TopEnergisers = (props) => {
 									{item.name}
 								</Link>
 							</td>
-							<td>
+							{/* <td>
 								<td className="tag">{item.tag}</td>
 							</td>
 							<td>
@@ -54,7 +54,7 @@ const TopEnergisers = (props) => {
 							</td>
 							<td>{item.external ? <td>Yes</td> : <td>No</td>}</td>
 							<td>{item.upvote}</td>
-							<td>{item.downvote}</td>
+							<td>{item.downvote}</td> */}
 						</tr>
 					</tbody>
 				))}

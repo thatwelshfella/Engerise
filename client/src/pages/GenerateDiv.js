@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Search from "./Search";
+import Tags from "./Tags";
 // import data from "../data/energiser.json";
 
 function GenerateDiv() {

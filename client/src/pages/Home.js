@@ -13,8 +13,8 @@ export function Home() {
 					<h1 className="text-left p-4">Energisers random generator</h1>
 				</div>
 				<div className="row">
-					<Tags />
 					<GenerateDiv />
+					<Tags />
 					<br />
 					<div className="col-12 col-md-6"></div>
 					<div className="col-12 col-md-6">
