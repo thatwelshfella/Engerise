@@ -4,9 +4,11 @@ import Home from "./pages/Home";
 import Heading from "./pages/Heading";
 import ResultsTable from "./pages/ResultsTable";
 import Description from "./pages/Description";
+import "./app.scss";
+
 
 const App = () => (
-	<div  className="container top-div">
+	<div  className="container-fluid">
 		 <Heading />
 	<Switch>
 		<Route path="/" exact>

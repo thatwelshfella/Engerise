@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Search from "./Search";
-import "./app.scss";
 import Tags from "./Tags";
-
-// import data from "../data/energiser.json";
 
 function GenerateDiv() {
 //   const [searchData, setSearchData] = useState(data);
@@ -20,6 +17,8 @@ const search = (searchVal) => {
 				<br></br>
 				<br></br>
 				<Search search={search} />
+
+				<br></br>
 				<Tags />
 				<br></br>
 			</div>

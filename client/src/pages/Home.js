@@ -14,13 +14,15 @@ export function Home() {
 				</div>
 				<div className="row">
 					<GenerateDiv />
-					<br />
-					<div className="col-12 col-md-6 p-3">
+					<br /> <div className="col-0 col-md-1 p-4"></div>
+					<div className="col-12 col-md-6 p-4">
 						<WhatIsAnEnergiser />
 					</div>
-					<div className="col-12 col-md-6 p-3">
+					<div className="col-0 col-md-1 p-4"></div>
+					<div className="col-12 col-md-3 p-4">
 						<TopEnergisers />
 					</div>
+					<div className="col-0 col-md-1 p-4"></div>
 				</div>
 			</div>
 		</main>
