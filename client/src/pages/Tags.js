@@ -1,83 +1,101 @@
-import React from 'react';
+import React from "react";
+import { Tag } from "carbon-components-react";
 import { Link } from "react-router-dom";
 
 function Tags(props) {
-    return (
-			<div>
+	return (
+		<div>
+			{"Tags:  "}
+			<Tag type="gray" title="Clear Filter">
 				<Link
-					className=""
+					className="filterTag"
 					to={{
 						pathname: "/results",
 						api: "/api/easy",
 					}}
 				>
 					Easy
-				</Link>{" "}
+				</Link>
+			</Tag>{" "}
+			<Tag type="gray" title="Clear Filter">
 				<Link
-					className=""
+					className="filterTag"
 					to={{
 						pathname: "/results",
 						api: "/api/medium",
 					}}
 				>
 					Medium
-				</Link>{" "}
+				</Link>
+			</Tag>{" "}
+			<Tag type="gray" title="Clear Filter">
 				<Link
-					className=""
+					className="filterTag"
 					to={{
 						pathname: "/results",
 						api: "/api/difficult",
 					}}
 				>
 					Difficult
-				</Link>{" "}
+				</Link>
+			</Tag>{" "}
+			<Tag type="gray" title="Clear Filter">
 				<Link
-					className=""
+					className="filterTag"
 					to={{
 						pathname: "/results",
 						api: "/api/external",
 					}}
 				>
 					External Link
-				</Link>{" "}
+				</Link>
+			</Tag>{" "}
+			<Tag type="gray" title="Clear Filter">
 				<Link
-					className=""
+					className="filterTag"
 					to={{
 						pathname: "/results",
 						api: "/api/internal",
 					}}
 				>
 					Not External
-				</Link>{" "}
+				</Link>
+			</Tag>{" "}
+			<Tag type="gray" title="Clear Filter">
 				<Link
-					className=""
+					className="filterTag"
 					to={{
 						pathname: "/results",
 						api: "/api/5minutes",
 					}}
 				>
 					5 Minutes
-				</Link>{" "}
+				</Link>
+			</Tag>{" "}
+			<Tag type="gray" title="Clear Filter">
 				<Link
-					className=""
+					className="filterTag"
 					to={{
 						pathname: "/results",
 						api: "/api/10minutes",
 					}}
 				>
 					10 Minutes
-				</Link>{" "}
+				</Link>
+			</Tag>{" "}
+			<Tag type="gray" title="Clear Filter">
 				<Link
-					className=""
+					className="filterTag"
 					to={{
 						pathname: "/results",
 						api: "/api/15minutes",
 					}}
 				>
 					15 Minutes
-				</Link>{" "}
-			</div>
-		);
+				</Link>
+			</Tag>{" "}
+		</div>
+	);
 }
 
 export default Tags;

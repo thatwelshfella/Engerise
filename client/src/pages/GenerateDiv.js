@@ -1,37 +1,48 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Search from "./Search";
+import SearchBar from "./SearchBar";
 import Tags from "./Tags";
-// import data from "../data/energiser.json";
 
 function GenerateDiv() {
-//   const [searchData, setSearchData] = useState(data);
+	//   const [searchData, setSearchData] = useState(data);
 
-const [searchRes, setSearchRes] = useState("");
-const search = (searchVal) => {
-  setSearchRes(searchVal);
-};
+	const [searchRes, setSearchRes] = useState("");
+	const search = (searchVal) => {
+		setSearchRes(searchVal);
+	};
 
-  return (
+	return (
 		<div>
-			<div className="col-9">
+			<div>
 				<br></br>
 				<br></br>
-        <Search search={search} />
+				{/* <Search search={search} /> */}
+				<SearchBar search={search} />
+				<br></br>
+				<Tags />
 				<br></br>
 			</div>
-			<div>
-{" "}
+			<div className="col-12 d-flex justify-content-around p-1 homepageButtons">
 				<Link
-
 					className="btn btn-primary generate_btn"
 					to={{
 						pathname: "/results",
 						api: "/api/wholelist",
-            searchCriteria: searchRes,
+						searchCriteria: searchRes,
 					}}
-				>Generate Energiser</Link>
-
+				>
+					Search Energisers
+				</Link>
+				<Link
+					className="btn btn-primary generate_btn"
+					to={{
+						pathname: "/results",
+						api: "/api/wholelist",
+					}}
+				>
+					Random List
+				</Link>
 			</div>
 		</div>
 	);

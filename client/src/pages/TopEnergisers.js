@@ -14,13 +14,12 @@ const TopEnergisers = (props) => {
 
 
 	return (
-		<div className="pt-4">
-            <br />
-			<h2 className="text-center p-4">Top Energisers</h2>
-			<table className="container table table-success">
-				<thead className="font-weight-bold result-thead">
+		<div className="pt-4 border border-dark">
+			<h5 className="text-center p-1">Top Favourite Energisers</h5>
+			<table className="container table">
+				<thead className="">
 					{/* <td>ID</td> */}
-					<td>Name of Energiser</td>
+					{/* <td>Name of Energiser</td> */}
 					{/* <td>Difficulty</td>
 					<td>Recommended Time</td>
 					<td>External Site</td>
@@ -28,10 +27,10 @@ const TopEnergisers = (props) => {
 					<td>Downvotes</td> */}
 				</thead>
 				{energiser.map((item) => (
-					<tbody className="result-tbody" key={item.id}>
+					<tbody key={item.id}>
 						<tr>
 							{/* <td>{item.id}</td> */}
-							<td>
+							<td className="topEnergiserName" >
 								<Link
 									to={{
 										pathname: `/description/${item.id}`,

@@ -1,12 +1,15 @@
 import { Route, Switch } from "react-router-dom";
 import About from "./pages/About";
 import Home from "./pages/Home";
+import Footer from "./pages/Footer";
 import Heading from "./pages/Heading";
 import ResultsTable from "./pages/ResultsTable";
 import Description from "./pages/Description";
+import "./app.scss";
+
 
 const App = () => (
-	<div  className="container top-div">
+	<div  className="container-fluid">
 		 <Heading />
 	<Switch>
 		<Route path="/" exact>
@@ -23,6 +26,7 @@ const App = () => (
 		<Route path="/description/:id" component={Description}>
 		</Route>
 	</Switch>
+	<Footer />
 	</div>
 );
 
