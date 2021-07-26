@@ -1,3 +1,51 @@
+.topEnergiserName a:link {
+  color: red;
+}
+
+.topEnergiserName a:visited {
+  color: red;
+}
+.homepageButtons a:link {
+  color: white;
+}
+
+.homepageButtons a:visited {
+  color: white;
+}
+
+/* unvisited link */
+a:link {
+  color: black;
+}
+
+/* visited link */
+a:visited {
+  color: black;
+}
+
+/* mouse over link */
+a:hover {
+  color: red;
+}
+
+/* selected link */
+a:active {
+  color: darkgrey;
+}
+
+
+.logo{
+height: 60px;
+width: auto;
+}
+
+
+.filterTag {
+  color: black;
+  text-decoration: none;
+}
+
+
 body{
 	background-color: #34A0A4;
 	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -23,7 +71,7 @@ h1{
 }
 
 .result-tbody{
-	background-color: #34A0A4;
+	background-color: white;
 	color: #184E77;
 }
 
@@ -39,10 +87,9 @@ h1{
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.generate_btn{
-	margin-left: 40rem;
-	background-color: #1E6091;
-	color: #D9ED92;
+.generate_btn {
+	background-color: red;
+	color: white;
 	width: 12rem;
 }
 
