@@ -14,13 +14,12 @@ const TopEnergisers = (props) => {
 
 
 	return (
-		<div className="pt-4">
-            <br />
+		<div className="pt-4 border border-dark">
 			<h2 className="text-center p-4">Top Energisers</h2>
-			<table className="container table table-success">
-				<thead className="font-weight-bold result-thead">
+			<table className="container table">
+				<thead className="">
 					{/* <td>ID</td> */}
-					<td>Name of Energiser</td>
+					{/* <td>Name of Energiser</td> */}
 					{/* <td>Difficulty</td>
 					<td>Recommended Time</td>
 					<td>External Site</td>
@@ -28,7 +27,7 @@ const TopEnergisers = (props) => {
 					<td>Downvotes</td> */}
 				</thead>
 				{energiser.map((item) => (
-					<tbody className="result-tbody" key={item.id}>
+					<tbody className="" key={item.id}>
 						<tr>
 							{/* <td>{item.id}</td> */}
 							<td>
