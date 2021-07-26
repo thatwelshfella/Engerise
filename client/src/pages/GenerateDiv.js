@@ -13,7 +13,7 @@ const search = (searchVal) => {
 
   return (
 		<div>
-			<div className="col-9">
+			<div>
 				<br></br>
 				<br></br>
 				<Search search={search} />
