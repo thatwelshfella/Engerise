@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Search from "./Search";
 import "./app.scss";
-import { Tag } from "carbon-components-react";
+import Tags from "./Tags";
 
 // import data from "../data/energiser.json";
 
@@ -16,11 +16,11 @@ const search = (searchVal) => {
 
   return (
 		<div>
-			<Tag>Tag</Tag>
 			<div className="col-9">
 				<br></br>
 				<br></br>
 				<Search search={search} />
+				<Tags />
 				<br></br>
 			</div>
 			<div>
