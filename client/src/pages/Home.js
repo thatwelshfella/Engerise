@@ -4,7 +4,7 @@ import Tags from "./Tags";
 import TopEnergisers from "./TopEnergisers";
 import WhatIsAnEnergiser from "./WhatIsAnEnergiser";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Home.css";
+import "./Home.scss";
 
 export function Home() {
 	return (

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Search from "./Search";
-import Tags from "./Tags";
+import "./app.scss";
+import { Tag } from "carbon-components-react";
+
 // import data from "../data/energiser.json";
 
 function GenerateDiv() {
@@ -14,24 +16,25 @@ const search = (searchVal) => {
 
   return (
 		<div>
+			<Tag>Tag</Tag>
 			<div className="col-9">
 				<br></br>
 				<br></br>
-        <Search search={search} />
+				<Search search={search} />
 				<br></br>
 			</div>
 			<div>
-{" "}
+				{" "}
 				<Link
-
 					className="btn btn-primary generate_btn"
 					to={{
 						pathname: "/results",
 						api: "/api/wholelist",
-            searchCriteria: searchRes,
+						searchCriteria: searchRes,
 					}}
-				>Generate Energiser</Link>
-
+				>
+					Generate Energiser
+				</Link>
 			</div>
 		</div>
 	);
