@@ -86,11 +86,21 @@ router.get("/topEnergisers", function (req, res) {
 		.then((result) => res.json(result.rows))
 		.catch((e) => console.error(e));
 });
-router.get("/plus1", function (req, res) {
+router.put("/upvote/:id", function (req, res) {
+	const { id } = req.params;
+	// const { upvote } = req.body;
+	console.log(req.params);
 	pool
-		.query(
-			"UPDATE energisers SET upvote = upvote + 1 WHERE id = 1"
-		)
+		.query("UPDATE energisers SET upvote = upvote + 1 WHERE id = $1", [id])
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+router.put("/downvote/:id", function (req, res) {
+	const { id } = req.params;
+	// const { upvote } = req.body;
+	console.log(req.params);
+	pool
+		.query("UPDATE energisers SET downvote = downvote - 1 WHERE id = $1", [id])
 		.then((result) => res.json(result.rows))
 		.catch((e) => console.error(e));
 });

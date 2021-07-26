@@ -8,13 +8,34 @@ function Description(props) {
 	const [downvote, setDownvote] = useState(props.location.downvote);
 
 	// increment upvote function
-	const incrementCounter = ()=>{
+	const incrementCounter = () => {
 		setUpvote(upvote + 1);
+		const requestOptions = {
+			method: "PUT",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				title: "React Hooks PUT Request Example",
+				upvote: upvote,
+			}),
+		};
+		fetch(`../api/upvote/${props.location.id}`, requestOptions)
+			.then((response) => response.json())
+			.then((err) => console.log(err));
 	};
-
 	// decrement downvote function
-	const decrementCounter = ()=>{
+	const decrementCounter = () => {
 		setDownvote(downvote - 1);
+		const requestOptions = {
+			method: "PUT",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				title: "React Hooks PUT Request Example",
+				downvote: downvote,
+			}),
+		};
+		fetch(`../api/downvote/${props.location.id}`, requestOptions)
+			.then((response) => response.json())
+			.then((err) => console.log(err));
 	};
 
     // function for back button to be added
