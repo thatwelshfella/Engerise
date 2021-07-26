@@ -1,6 +1,7 @@
 import { Route, Switch } from "react-router-dom";
 import About from "./pages/About";
 import Home from "./pages/Home";
+import Footer from "./pages/Footer";
 import Heading from "./pages/Heading";
 import ResultsTable from "./pages/ResultsTable";
 import Description from "./pages/Description";
@@ -25,6 +26,7 @@ const App = () => (
 		<Route path="/description/:id" component={Description}>
 		</Route>
 	</Switch>
+	<Footer />
 	</div>
 );
 

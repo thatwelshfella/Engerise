@@ -6,7 +6,7 @@ function WhatIsAnEnergiser() {
 			<br />
 			<br />
 			<br />
-			<h2>What is an Energiser?</h2>
+			<h5>What is an Energiser?</h5>
 			<br />
 			<p>
 				An energiser is an activity or game designed to welcome attendees and
