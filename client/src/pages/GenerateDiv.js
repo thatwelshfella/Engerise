@@ -31,8 +31,7 @@ const search = (searchVal) => {
 						api: "/api/wholelist",
 						searchCriteria: searchRes,
 					}}
-				>
-					Generate Energiser
+				>Generate Energiser
 				</Link>
 			</div>
 		</div>

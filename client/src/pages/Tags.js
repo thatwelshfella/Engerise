@@ -6,7 +6,7 @@ function Tags(props) {
 	return (
 		<div>
 			{"Tags:  "}
-			<Tag type="cool-gray" title="Clear Filter">
+			<Tag type="gray" title="Clear Filter">
 				<Link
 					className="filterTag"
 					to={{
@@ -17,7 +17,7 @@ function Tags(props) {
 					Easy
 				</Link>
 			</Tag>{" "}
-			<Tag>
+			<Tag type="gray" title="Clear Filter">
 				<Link
 					className="filterTag"
 					to={{
@@ -28,7 +28,7 @@ function Tags(props) {
 					Medium
 				</Link>
 			</Tag>{" "}
-			<Tag>
+			<Tag type="gray" title="Clear Filter">
 				<Link
 					className="filterTag"
 					to={{
@@ -39,7 +39,7 @@ function Tags(props) {
 					Difficult
 				</Link>
 			</Tag>{" "}
-			<Tag>
+			<Tag type="gray" title="Clear Filter">
 				<Link
 					className="filterTag"
 					to={{
@@ -50,7 +50,7 @@ function Tags(props) {
 					External Link
 				</Link>
 			</Tag>{" "}
-			<Tag>
+			<Tag type="gray" title="Clear Filter">
 				<Link
 					className="filterTag"
 					to={{
@@ -61,7 +61,7 @@ function Tags(props) {
 					Not External
 				</Link>
 			</Tag>{" "}
-			<Tag>
+			<Tag type="gray" title="Clear Filter">
 				<Link
 					className="filterTag"
 					to={{
@@ -72,7 +72,7 @@ function Tags(props) {
 					5 Minutes
 				</Link>
 			</Tag>{" "}
-			<Tag>
+			<Tag type="gray" title="Clear Filter">
 				<Link
 					className="filterTag"
 					to={{
@@ -83,7 +83,7 @@ function Tags(props) {
 					10 Minutes
 				</Link>
 			</Tag>{" "}
-			<Tag>
+			<Tag type="gray" title="Clear Filter">
 				<Link
 					className="filterTag"
 					to={{

@@ -1,3 +1,23 @@
+/* unvisited link */
+a:link {
+  color: black;
+}
+
+/* visited link */
+a:visited {
+  color: black;
+}
+
+/* mouse over link */
+a:hover {
+  color: red;
+}
+
+/* selected link */
+a:active {
+  color: darkgrey;
+}
+
 
 .logo{
 height: 60px;
@@ -52,7 +72,7 @@ h1{
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.generate_btn{
+.generate_btn {
 	background-color: red;
 	color: white;
 	width: 12rem;
