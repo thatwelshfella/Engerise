@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Search from "./Search";
 import SearchBar from "./SearchBar";
 import Tags from "./Tags";
 
@@ -17,13 +16,12 @@ function GenerateDiv() {
 			<div>
 				<br></br>
 				<br></br>
-				{/* <Search search={search} /> */}
 				<SearchBar search={search} />
 				<br></br>
 				<Tags />
 				<br></br>
 			</div>
-			<div className="col-12 d-flex justify-content-around p-1 homepageButtons">
+			<div className="col-12 d-flex justify-content-around homepageButtons">
 				<Link
 					className="btn btn-primary generate_btn"
 					to={{
