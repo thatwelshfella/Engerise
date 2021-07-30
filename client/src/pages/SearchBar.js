@@ -15,8 +15,8 @@ const SearchBar = (props) => {
 		<Search
 			type="text"
 			value={searchInput}
+			style={{ borderRadius: "10px" }}
 			id="energiserTitle"
-			className="form-control"
 			onChange={handleSearchInput}
 			placeHolderText="Search For An Energiser"
 		/>

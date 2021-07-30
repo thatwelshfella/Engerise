@@ -1,9 +1,9 @@
 import React from "react";
 import cyf_brand from "./cyf_brand.png";
 
-function Footer(props) {
+function Footer() {
 	return (
-		<footer class="text-center text-lg-start bg-light text-muted">
+		<footer className="text-center text-lg-start footer">
 			<div className="container-fluid">
 				<div className="row">
 					<div className="col-3 d-flex flex-column justify-content-evenly">
