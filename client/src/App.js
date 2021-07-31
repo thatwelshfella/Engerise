@@ -6,6 +6,7 @@ import Footer from "./pages/Footer";
 import Heading from "./pages/Heading";
 import ResultsTable from "./pages/ResultsTable";
 import Description from "./pages/Description";
+import NewEnergiser from "./pages/NewEnergiser";
 import "./app.scss";
 
 
@@ -20,6 +21,8 @@ const App = () => (
 				<About />
 			</Route>
 			<Route path="/results/" component={ResultsTable}></Route>
+      <Route path="/new/" component={NewEnergiser}>
+		</Route>
 			<Route path="/description" exact>
 				<Description />
 			</Route>

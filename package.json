@@ -69,8 +69,9 @@
 	},
 	"dependencies": {
 		"@babel/runtime": "^7.14.6",
-		"@carbon/icons-react": "^10.36.0",
-		"bootstrap": "5.0.2",
+
+		"@carbon/icons-react": "^10.22.0",
+		"bootstrap": "^5.0.2",
 		"carbon-components": "^10.25.0",
 		"carbon-components-react": "^7.25.0",
 		"carbon-icons": "^7.0.7",
@@ -79,6 +80,7 @@
 		"helmet": "^4.6.0",
 		"morgan": "^1.10.0",
 		"pg": "^8.6.0",
+		"react-bootstrap": "^1.6.1",
 		"react-icons": "^4.2.0"
 	},
 	"engines": {
