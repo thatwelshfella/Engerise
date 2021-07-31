@@ -69,6 +69,7 @@
 	},
 	"dependencies": {
 		"@babel/runtime": "^7.14.6",
+
 		"@carbon/icons-react": "^10.22.0",
 		"bootstrap": "^5.0.2",
 		"carbon-components": "^10.25.0",
