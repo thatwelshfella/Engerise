@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { Search } from "carbon-components-react";
 
-import { Link } from "react-router-dom";
-
-
 const SearchBar = (props) => {
 	const [searchInput, setSearchInput] = useState("");
 	function handleSearchInput(event) {
