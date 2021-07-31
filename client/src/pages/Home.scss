@@ -158,6 +158,38 @@ header{
 	cursor: pointer;
   }
 
+  .energiserLabel{
+	  width: 15rem;
+		margin-left: 16rem;
+		font-size: 1.5rem;
+  }
+
+  .newEnergiserInput {
+	width: 25rem;
+	height: 2rem;
+	margin: 3rem;
+	font-size: 1.2rem;
+	margin-right: 2rem;
+  }
+
+  .addbtn{
+	  width: 12rem;
+	  font-size: 1.5rem;
+	  margin-left: 70%;
+  }
+
+    .energiseTextarea {
+		width: 25rem;
+		height: 10rem;
+		margin: 3rem;
+		font-size: 1.2rem;
+		margin-right: 2rem;
+  }
+
+  .formfield * {
+	vertical-align: middle;
+  }
+
  @media (min-width: 576px) {
 .topEnergiserName a:link {
   font-size: 1.5em;
