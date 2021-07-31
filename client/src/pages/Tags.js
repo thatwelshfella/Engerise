@@ -2,9 +2,12 @@ import React from "react";
 import { Tag } from "carbon-components-react";
 import { Link } from "react-router-dom";
 
-function Tags(props) {
+function Tags() {
 	return (
-		<div>
+		<div
+			style={{ textAlign: "center" }}
+			className="d-flex justify-content-center align-items-center"
+		>
 			{"Tags:  "}
 			<Tag type="gray" title="Clear Filter">
 				<Link
@@ -39,6 +42,7 @@ function Tags(props) {
 					Difficult
 				</Link>
 			</Tag>{" "}
+			{/* Below Tags are Hidden as Carbon Design Suggests Maximum of 6 Tags
 			<Tag type="gray" title="Clear Filter">
 				<Link
 					className="filterTag"
@@ -47,7 +51,7 @@ function Tags(props) {
 						api: "/api/external",
 					}}
 				>
-					External Link
+					External
 				</Link>
 			</Tag>{" "}
 			<Tag type="gray" title="Clear Filter">
@@ -60,7 +64,7 @@ function Tags(props) {
 				>
 					Not External
 				</Link>
-			</Tag>{" "}
+			</Tag>{" "} */}
 			<Tag type="gray" title="Clear Filter">
 				<Link
 					className="filterTag"
@@ -69,9 +73,10 @@ function Tags(props) {
 						api: "/api/5minutes",
 					}}
 				>
-					5 Minutes
+					Short
 				</Link>
 			</Tag>{" "}
+			{/* Tag Hidden as too many tags per Carbon Design
 			<Tag type="gray" title="Clear Filter">
 				<Link
 					className="filterTag"
@@ -80,9 +85,9 @@ function Tags(props) {
 						api: "/api/10minutes",
 					}}
 				>
-					10 Minutes
+					10 Mins
 				</Link>
-			</Tag>{" "}
+			</Tag>{" "} */}
 			<Tag type="gray" title="Clear Filter">
 				<Link
 					className="filterTag"
@@ -91,7 +96,7 @@ function Tags(props) {
 						api: "/api/15minutes",
 					}}
 				>
-					15 Minutes
+					Long
 				</Link>
 			</Tag>{" "}
 		</div>

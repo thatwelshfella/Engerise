@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import RowTable from "./RowTable";
+import MyModal from "./MyModal";
 
 const ResultsTable = (props) => {
 	const [energiser, setEnergiser] = useState([]);
 	const [sorted, setSorted] = useState(0);
+    const [modalShow, setModalShow] = React.useState(false);
 
 	props.location.api ? null : (props.location.api = "/api/wholelist");
 
@@ -27,7 +29,11 @@ const ResultsTable = (props) => {
 							.toLowerCase()
 							.includes(props.location.searchCriteria.toLowerCase())
 					);
+					if(serachData.length == 0){
+						setModalShow(true);
+					}else{
 					setEnergiser(serachData);
+					}
 				} else {
 					setEnergiser(data);
 				}
@@ -116,9 +122,15 @@ const ResultsTable = (props) => {
 	}
 	return (
 		<div className="res-div pt-4">
-			<div className="mt-3 detail-div text-center">
-				<Link to="/">
+			<MyModal body = "Sorry! There is no match to your search criteria." header ="Search an Energiser" show={modalShow}
+                onHide={() => setModalShow(false)} />
+			<div className="detail-div text-center">
+				<Link className="mt-3 float-left" to="/">
 					<button className="generate_btn">BACK</button>
+				</Link>
+				<span  className="mt-6"></span>
+				<Link className="mt-3 float-right" to="/new">
+					<button className="generate_btn">Create new Energiser</button>
 				</Link>
 			</div>
 			<h1 className="text-center p-4">RESULTS TABLE</h1>

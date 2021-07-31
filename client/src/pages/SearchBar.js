@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { Search } from "carbon-components-react";
 
-import { Link } from "react-router-dom";
-
-
 const SearchBar = (props) => {
 	const [searchInput, setSearchInput] = useState("");
 	function handleSearchInput(event) {
@@ -15,8 +12,8 @@ const SearchBar = (props) => {
 		<Search
 			type="text"
 			value={searchInput}
+			style={{ borderRadius: "10px" }}
 			id="energiserTitle"
-			className="form-control"
 			onChange={handleSearchInput}
 			placeHolderText="Search For An Energiser"
 		/>
