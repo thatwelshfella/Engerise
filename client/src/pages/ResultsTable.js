@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import RowTable from "./RowTable";
+import { DataTable, Table, TableHead, TableHeader, TableBody, Button } from "carbon-components-react";
+import { CaretSort16 } from "@carbon/icons-react";
 
 const ResultsTable = (props) => {
 	const [energiser, setEnergiser] = useState([]);
@@ -47,6 +49,7 @@ const ResultsTable = (props) => {
 	// const [dataTable, setDataTable] = useState(shuffle(energiser));
 
 	function sortNum(event) {
+		console.log("hello");
 		let sortedEn = shuffle(energiser);
 		if (sorted % 2 === 0) {
 			if (event.target.innerText === "Name of Energiser") {
@@ -116,41 +119,58 @@ const ResultsTable = (props) => {
 	}
 	return (
 		<div className="res-div pt-4">
-			<div className="mt-3 detail-div text-center">
+			<div className="mt-3 detail-div text-center hompageButtons">
 				<Link to="/">
-					<button className="generate_btn">BACK</button>
+					<Button style={{
+						border:"0",
+						borderRadius: "10px",
+						textDecoration:"none",
+						fontSize: "1.3em",
+						background: "#ED4343",
+						textAlign: "center" }} kind="secondary">
+							BACK
+					</Button>
 				</Link>
 			</div>
 			<h1 className="text-center p-4">RESULTS TABLE</h1>
-			<table className="container table table-success">
-				<thead className="font-weight-bold result-thead">
+			<div className="table-height ">
+			<Table className="container table">
+			{/* <Table className="container table table-success"> */}
+				<TableHead className="result-thead">
 					{/* <td>ID</td> */}
-					<th className="set-pointer" scope="col" onClick={sortNum}>
+					<TableHeader className="set-pointer" scope="col" onClick={sortNum} >
 						Name of Energiser
-					</th>
-					<th className="set-pointer" scope="col" onClick={sortNum}>
+						<CaretSort16 />
+					</TableHeader>
+					<TableHeader className="set-pointer" scope="col" onClick={sortNum}>
 						Difficulty
-					</th>
-					<th className="set-pointer" scope="col" onClick={sortNum}>
+						<CaretSort16 />
+					</TableHeader>
+					<TableHeader className="set-pointer" scope="col" onClick={sortNum}>
 						Recommended Time
-					</th>
-					<th>External Site</th>
-					<th className="set-pointer" scope="col" onClick={sortNum}>
+						<CaretSort16 />
+					</TableHeader>
+					<TableHeader>External Site </TableHeader>
+					<TableHeader className="set-pointer" scope="col" onClick={sortNum}>
 						Upvotes
-					</th>
-					<th className="set-pointer" scope="col" onClick={sortNum}>
+						<CaretSort16 />
+					</TableHeader>
+					<TableHeader className="set-pointer" scope="col" onClick={sortNum}>
 						Downvotes
-					</th>
-					<th className="set-pointer" onClick={sortNum}>
+						<CaretSort16 />
+					</TableHeader>
+					<TableHeader className="set-pointer" onClick={sortNum}>
 						Favorite
-					</th>
-				</thead>
+						<CaretSort16 />
+					</TableHeader>
+				</TableHead>
 				{energiser.map((item) => (
-					<tbody className="result-tbody" key={item.id}>
+					<TableBody className="result-tbody" key={item.id}>
 						<RowTable energiser={item} />
-					</tbody>
+					</TableBody>
 				))}
-			</table>
+			</Table>
+			</div>
 		</div>
 	);
 };
