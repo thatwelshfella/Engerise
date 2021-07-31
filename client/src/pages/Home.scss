@@ -1,16 +1,47 @@
+
+
+//footer
+.footer {
+background: darkgrey;
+color:white;
+}
+
+.footer a:link{
+	  color: white;
+text-decoration: none;
+}
+
+.footer a:visited{
+	  color: white;
+text-decoration: none;
+}
+
+.footer a:hover{
+	  color: #ED4343;
+	  text-decoration: underline;
+}
+
+//Home page top favourites component
+
 .topEnergiserName a:link {
-  color: red;
+  color: #ED4343;
+  font-size: 1.6em;
 }
 
 .topEnergiserName a:visited {
-  color: red;
+  color: #ED4343;
+  font-size: 1.6em;
 }
+
+// Home page buttons
 .homepageButtons a:link {
   color: white;
+text-decoration: none;
 }
 
 .homepageButtons a:visited {
   color: white;
+   text-decoration: none;
 }
 
 /* unvisited link */
@@ -25,7 +56,7 @@ a:visited {
 
 /* mouse over link */
 a:hover {
-  color: red;
+  color: #ED4343;
 }
 
 /* selected link */
@@ -33,23 +64,34 @@ a:active {
   color: darkgrey;
 }
 
-
+//Code your future logo
 .logo{
-height: 91px;
-width: 289px;
+height: 60px;
+width: auto;
 }
 
-
+// Tags under search bar on home page
 .filterTag {
   color: black;
   text-decoration: none;
+  padding-left: 2px;
+  padding-right: 2px;
+
+}
+
+// Tags under search bar on home page
+.randomListText {
+	font-size: 1.6em;
+}
+
+//What is an energiser element
+.WhatIsAnEnergiser {
+	font-size: 1.6em;
 }
 
 
 body{
-	background-color: #34A0A4;
 	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-	color: #184E77	;
 }
 
 .top-div{
@@ -59,10 +101,6 @@ body{
 
 header{
 	height: 8rem;
-}
-
-h1{
-	color: #184E77;
 }
 
 .result-thead{
@@ -88,17 +126,24 @@ h1{
 }
 
 .generate_btn {
-	background-color: red;
+	background-color: #ED4343;
 	color: white;
-	width: 12rem;
+}
+
+
+.primary_btn {
+	background-color: #ED4343;
+	color: white;
+}
+
+
+.secondary_btn {
+	background-color: white;
+	color: black;
 }
 
 .res-div{
 	background-color: #52B69A;
-}
-
-.logo {
-	width: 100px;
 }
 
 .message {
@@ -144,3 +189,39 @@ h1{
   .formfield * {
 	vertical-align: middle;
   }
+
+ @media (min-width: 576px) {
+.topEnergiserName a:link {
+  font-size: 1.5em;
+}
+
+.topEnergiserName a:visited {
+  font-size: 1.5em;
+}
+
+.WhatIsAnEnergiser {
+	font-size: 1.5em;
+}
+
+.randomListText {
+	font-size: 1.5em;
+}
+}
+
+  @media (min-width: 768px) {
+.topEnergiserName a:link {
+  font-size: 1.2em;
+}
+
+.topEnergiserName a:visited {
+  font-size: 1.2em;
+}
+
+.WhatIsAnEnergiser {
+	font-size: 1.2em;
+}
+
+.randomListText {
+	font-size: 1.2em;
+}
+}

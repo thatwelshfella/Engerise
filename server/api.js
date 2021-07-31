@@ -90,7 +90,7 @@ router.get("/external", function (req, res) {
 router.get("/topEnergisers", function (req, res) {
 	pool
 		.query(
-			"SELECT *, (upvote + downvote) as OrderCondition FROM energisers ORDER BY OrderCondition DESC LIMIT 10"
+			"SELECT *, (upvote + downvote) as OrderCondition FROM energisers ORDER BY OrderCondition DESC LIMIT 6"
 		)
 		.then((result) => res.json(result.rows))
 		.catch((e) => console.error(e));
