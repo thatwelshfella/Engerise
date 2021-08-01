@@ -68,7 +68,7 @@ const NewEnergiser = () => {
             }
     }
 	return (
-		<div className="d-flex flex-column align-items-center justify-content-center">
+		<div className="d-flex flex-column align-items-center justify-content-center font">
             <div>
                 {/* <label className="energiserLabel">Name Of Energiser: </label> */}
                 {/* <input
@@ -217,11 +217,10 @@ const NewEnergiser = () => {
                     pathname: "/results",
                     api: "/api/wholelist",
                     searchCriteria: null,
-                }}>
+                }} style={{ textDecoration: "none" }}>
                     <Button className="generate_btn" style={{
 							border: "0",
 							borderRadius: "10px",
-							textDecoration: "none",
 							fontSize: "1.3em",
 							background: "#ED4343",
                             marginRight: "1.3em",

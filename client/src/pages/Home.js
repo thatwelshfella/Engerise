@@ -8,7 +8,7 @@ import "./Home.scss";
 export function Home() {
 	return (
 		<main role="main">
-			<div className="container-fluid min-vh-90 justify-space-between">
+			<div className="container-fluid min-vh-90 justify-space-between font">
 				<div className="row gy-3">
 					<div className="col-0 col-md-1 col-lg-2 col-xl-3"></div>
 						<GenerateDiv />

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import RowTable from "./RowTable";
-import { DataTable, Table, TableHead, TableHeader, TableBody, Button } from "carbon-components-react";
+import { Table, TableBody, Button } from "carbon-components-react";
 import { CaretSort16 } from "@carbon/icons-react";
 import MyModal from "./MyModal";
 
@@ -55,7 +55,6 @@ const ResultsTable = (props) => {
 	// const [dataTable, setDataTable] = useState(shuffle(energiser));
 
 	function sortNum(event) {
-		console.log("hello");
 		let sortedEn = shuffle(energiser);
 		if (sorted % 2 === 0) {
 			if (event.target.innerText === "Name of Energiser") {
@@ -124,58 +123,80 @@ const ResultsTable = (props) => {
 		setSorted(sorted + 1);
 	}
 	return (
-		<div className="res-div pt-4">
+		<div className="res-div pt-4 font">
     <MyModal body = "Sorry! There is no match to your search criteria." header ="Search an Energiser" show={modalShow}
                 onHide={() => setModalShow(false)} />
 			<div className="mt-3 detail-div text-center hompageButtons">
-				<Link to="/">
+				<Link to="/" style={{ textDecoration: "none" }}>
 					<Button style={{
 						border:"0",
 						borderRadius: "10px",
-						textDecoration:"none",
 						fontSize: "1.3em",
 						background: "#ED4343",
-						textAlign: "center" }} kind="secondary">
+						textAlign: "center",
+						margin: "0.5em" }} kind="secondary">
 							BACK
 					</Button>
 				</Link>
 				<span  className="mt-6"></span>
-				<Link className="mt-3 float-right" to="/new">
-					<button className="generate_btn">Create new Energiser</button>
+				<Link className="mt-3 float-right" to="/new" style={{ textDecoration: "none" }}>
+					<Button className="generate_btn" style={{
+						border:"0",
+						borderRadius: "10px",
+						fontSize: "1.3em",
+						background: "#ED4343",
+						textAlign: "center",
+						margin: "0.5em" }} kind="secondary">Create new Energiser</Button>
 				</Link>
 			</div>
 			<h1 className="text-center p-4">RESULTS TABLE</h1>
 			<div className="table-height ">
-			<Table className="container table">
+			<Table className="container table ">
 			{/* <Table className="container table table-success"> */}
-				<TableHead className="result-thead">
+				<thead className="result-thead">
 					{/* <td>ID</td> */}
-					<TableHeader className="set-pointer" scope="col" onClick={sortNum} >
+					<th className="set-pointer" scope="col" onClick={sortNum} >
+						<div className="fs-6 text" style={{ padding: "16px" }}>
 						Name of Energiser
-						<CaretSort16 />
-					</TableHeader>
-					<TableHeader className="set-pointer" scope="col" onClick={sortNum}>
+						<CaretSort16 style={{ color: "#fa4d56", margin:"5px" }} />
+						</div>
+					</th>
+					<th className="set-pointer" scope="col" onClick={sortNum}>
+					<div className="fs-6 text" style={{ padding: "16px" }}>
 						Difficulty
-						<CaretSort16 />
-					</TableHeader>
-					<TableHeader className="set-pointer" scope="col" onClick={sortNum}>
+						<CaretSort16 style={{ color: "#fa4d56", margin:"5px" }} />
+						</div>
+					</th>
+					<th className="set-pointer" scope="col" onClick={sortNum}>
+					<div className="fs-6 text" style={{ padding: "16px" }}>
 						Recommended Time
-						<CaretSort16 />
-					</TableHeader>
-					<TableHeader>External Site </TableHeader>
-					<TableHeader className="set-pointer" scope="col" onClick={sortNum}>
+						<CaretSort16 style={{ color: "#fa4d56", margin:"5px" }} />
+						</div>
+					</th>
+					<th>
+					<div className="fs-6 text" style={{ padding: "16px" }}>
+						External Site
+						</div>
+					</th>
+					<th className="set-pointer" scope="col" onClick={sortNum}>
+					<div className="fs-6 text" style={{ padding: "16px" }}>
 						Upvotes
-						<CaretSort16 />
-					</TableHeader>
-					<TableHeader className="set-pointer" scope="col" onClick={sortNum}>
+						<CaretSort16 style={{ color: "#fa4d56", margin:"5px" }} />
+						</div>
+					</th>
+					<th className="set-pointer" scope="col" onClick={sortNum}>
+					<div className="fs-6 text" style={{ padding: "16px" }}>
 						Downvotes
-						<CaretSort16 />
-					</TableHeader>
-					<TableHeader className="set-pointer" onClick={sortNum}>
+						<CaretSort16 style={{ color: "#fa4d56", margin:"5px" }} />
+						</div>
+					</th>
+					<th className="set-pointer" onClick={sortNum}>
+					<div className="fs-6 text" style={{ padding: "16px" }}>
 						Favorite
-						<CaretSort16 />
-					</TableHeader>
-				</TableHead>
+						<CaretSort16 style={{ color: "#fa4d56", margin:"5px" }} />
+						</div>
+					</th>
+				</thead>
 				{energiser.map((item) => (
 					<TableBody className="result-tbody" key={item.id}>
 						<RowTable energiser={item} />

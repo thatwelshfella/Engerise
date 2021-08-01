@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import { Button } from "carbon-components-react";
 
 function Description(props) {
 
@@ -83,44 +84,53 @@ function backButtonClicked(){
 
 
 	return (
-		<div className="container-fluid">
-			<div className="col">
-				<div className="h3 p-3 desc-div text-center">
+		<div className="font">
+			<div className=" bg-light p-5">
+				<div className="container col d-flex flex-column align-items-start">
+					<div className="h3 undeline">
 					Energiser Name : {props.location.name}
+					</div>
+						<hr />
+					<div className="h5 mt-1">
+						Time per person : {props.location.time}
+					</div>
+						<hr></hr>
+					<div className="h5 mt-1">
+						Description : {props.location.description}
+					</div>
+						<hr></hr>
 				</div>
-				<div>
-					<hr></hr>
-				</div>
-				<div className="mt-1 detail-div text-center">
-					Time per person : {props.location.time}
-				</div>
-				<div>
-					<hr></hr>
-				</div>
-				<div className="mt-1 detail-div text-center">
-					Description : {props.location.description}
-				</div>
-				<div>
-					<hr></hr>
-				</div>
-				<div className="d-flex align-items-center">
-					<FaThumbsUp onClick={incrementCounter}></FaThumbsUp>
+			</div>
+			<div className="col d-flex flex-row justify-content-center p-4">
+				<div className="d-flex align-items-center m-4">
+					<FaThumbsUp onClick={incrementCounter} size={25}
+					onMouseOver={({ target })=>target.style.color="green"}
+					onMouseOut={({ target })=>target.style.color="black"}>
+					</FaThumbsUp>
 					<p className="m-2">{upvote}</p>
 				</div>
-				<div className="d-flex align-items-center">
-					<FaThumbsDown onClick={decrementCounter}></FaThumbsDown>
+				<div className="d-flex align-items-center m-4">
+					<FaThumbsDown onClick={decrementCounter} size={25}
+					onMouseOver={({ target })=>target.style.color="red"}
+					onMouseOut={({ target })=>target.style.color="black"}></FaThumbsDown>
 					<p className="m-2">{downvote}</p>
 				</div>
+			</div>
 				<div className="mt-3 detail-div text-center">
 					<Link to={{
 						pathname: "/results",
 						api: "/api/wholelist",
 						searchCriteria: null,
-					}}>
-						<button className="generate_btn btnClass" onClick={backButtonClicked}>BACK</button>
+					}} style={{ textDecoration: "none" }}>
+						<Button className="generate_btn btnClass" onClick={backButtonClicked} style={{
+							border:"0",
+							borderRadius: "10px",
+							fontSize: "1.3em",
+							background: "#ED4343",
+							textAlign: "center",
+							margin: "0.5em" }} kind="secondary">BACK</Button>
 					</Link>
 				</div>
-			</div>
 		</div>
 	);
 }
