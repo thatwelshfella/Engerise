@@ -6,7 +6,7 @@ function WhatIsAnEnergiser() {
 			<br />
 			<br />
 			<br />
-			<p className="WhatIsAnEnergiser">
+			<p className="WhatIsAnEnergiser" data-testid='WhatIsAnEnergiser'>
 				What is an Energiser? <br />
 				<br /> An energiser is an activity or game designed to welcome attendees
 				and warm up the conversation among participants in a meeting or training
