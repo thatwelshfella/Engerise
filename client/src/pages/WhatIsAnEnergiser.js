@@ -6,6 +6,8 @@ function WhatIsAnEnergiser() {
 			<br />
 			<br />
 			<br />
+			{/* data-testid='WhatIsAnEnergiser' added as a locator for
+				testing library to aim for */}
 			<p className="WhatIsAnEnergiser" data-testid='WhatIsAnEnergiser'>
 				What is an Energiser? <br />
 				<br /> An energiser is an activity or game designed to welcome attendees
