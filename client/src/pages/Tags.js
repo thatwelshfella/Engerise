@@ -7,6 +7,7 @@ function Tags() {
 		<div
 			style={{ textAlign: "center" }}
 			className="d-flex justify-content-center align-items-center"
+			data-testid="Tags"
 		>
 			{"Tags:  "}
 			<Tag type="gray" title="Clear Filter">
