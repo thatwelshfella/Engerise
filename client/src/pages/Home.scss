@@ -1,3 +1,12 @@
+//breadcrumb
+.crumb a:link{
+	  color: ED4343 !important;
+}
+
+.crumb a:visited{
+	  color: ED4343  !important;
+}
+
 //footer
 .footer {
 background: darkgrey;
@@ -68,6 +77,12 @@ height: 60px;
 width: auto;
 }
 
+//Energise logo
+.elogo{
+height: 57px;
+width: auto;
+}
+
 // Tags under search bar on home page
 .filterTag {
   color: black;
@@ -90,10 +105,6 @@ width: auto;
 .top-div{
 	background-color: #656d68;
 	height: 60rem;
-}
-
-header{
-	height: 8rem;
 }
 
 .result-thead{
@@ -200,11 +211,11 @@ header{
 .randomListText {
 	font-size: 1.2em;
 }
-}
 
+  }
 .table-height{
-	height: 50vh;
-	overflow: scroll;
+	height: 70vh;	
+	overflow: auto;
 	font-family: 'Raleway', sans-serif;
 }
 

@@ -2,19 +2,21 @@ import React from "react";
 import { Tag } from "carbon-components-react";
 import { Link } from "react-router-dom";
 
-function Tags() {
+function Tags(props) {
 	return (
 		<div
 			style={{ textAlign: "center" }}
 			className="d-flex justify-content-center align-items-center"
-		>
+			>
 			{"Tags:  "}
 			<Tag type="gray" title="Clear Filter">
 				<Link
 					className="filterTag"
 					to={{
-						pathname: "/results",
+						pathname: "/results/",
 						api: "/api/easy",
+						userid: props.userid,
+						username: props.username,
 					}}
 				>
 					Easy
@@ -24,8 +26,10 @@ function Tags() {
 				<Link
 					className="filterTag"
 					to={{
-						pathname: "/results",
+						pathname: "/results/",
 						api: "/api/medium",
+						userid: props.userid,
+						username: props.username,
 					}}
 				>
 					Medium
@@ -35,8 +39,10 @@ function Tags() {
 				<Link
 					className="filterTag"
 					to={{
-						pathname: "/results",
+						pathname: "/results/",
 						api: "/api/difficult",
+						userid: props.userid,
+						username: props.username,
 					}}
 				>
 					Difficult
@@ -69,8 +75,10 @@ function Tags() {
 				<Link
 					className="filterTag"
 					to={{
-						pathname: "/results",
+						pathname: "/results/",
 						api: "/api/5minutes",
+						userid: props.userid,
+						username: props.username,
 					}}
 				>
 					Short
@@ -92,8 +100,10 @@ function Tags() {
 				<Link
 					className="filterTag"
 					to={{
-						pathname: "/results",
+						pathname: "/results/",
 						api: "/api/15minutes",
+						userid: props.userid,
+						username: props.username,
 					}}
 				>
 					Long
