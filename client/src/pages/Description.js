@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { Button } from "carbon-components-react";
+import Timer from "./Timer";
 
 function Description(props) {
 
@@ -82,23 +83,27 @@ function backButtonClicked(){
     console.log("Back Button Clicked");
 }
 
-
 	return (
 		<div className="font">
-			<div className=" bg-light p-5">
-				<div className="container col d-flex flex-column align-items-start">
-					<div className="h3 undeline">
-					Energiser Name : {props.location.name}
+			<div className="d-flex align-items-center justify-content-center bg-light" >
+				<div className="col-8 p-5">
+					<div className="container col d-flex flex-column align-items-start">
+						<div className="h3 undeline">
+						Energiser Name : {props.location.name}
+						</div>
+							<hr />
+						<div className="h5 mt-1">
+							Time per person : {props.location.time}
+						</div>
+							<hr></hr>
+						<div className="h5 mt-1">
+							Description : {props.location.description}
+						</div>
+							<hr></hr>
 					</div>
-						<hr />
-					<div className="h5 mt-1">
-						Time per person : {props.location.time}
-					</div>
-						<hr></hr>
-					<div className="h5 mt-1">
-						Description : {props.location.description}
-					</div>
-						<hr></hr>
+				</div>
+				<div>
+					<Timer energiserTime={props.location.time}></Timer>
 				</div>
 			</div>
 			<div className="col d-flex flex-row justify-content-center p-4">
