@@ -3,12 +3,20 @@ import { Link } from "react-router-dom";
 import RowTable from "./RowTable";
 import { Table, TableBody, Button } from "carbon-components-react";
 import { CaretSort16 } from "@carbon/icons-react";
+import { Add16 } from '@carbon/icons-react';
 import MyModal from "./MyModal";
 
 const ResultsTable = (props) => {
 	const [energiser, setEnergiser] = useState([]);
 	const [sorted, setSorted] = useState(0);
     const [modalShow, setModalShow] = React.useState(false);
+	const [userid, setUserid] = useState(0);
+	const [username, setUsername] = useState("");
+
+	useEffect(() => {
+		setUsername(localStorage.getItem("loginUsername"));
+		setUserid(localStorage.getItem("loginUserid"));
+	}, [userid, username]);
 
 	props.location.api ? null : (props.location.api = "/api/wholelist");
 
@@ -127,7 +135,11 @@ const ResultsTable = (props) => {
     <MyModal body = "Sorry! There is no match to your search criteria." header ="Search an Energiser" show={modalShow}
                 onHide={() => setModalShow(false)} />
 			<div className="mt-3 detail-div text-center hompageButtons">
-				<Link to="/" style={{ textDecoration: "none" }}>
+				<Link to={{
+							pathname: "/",
+							userid: userid,
+							username: username,
+						}} style={{ textDecoration: "none" }}>
 					<Button style={{
 						border:"0",
 						borderRadius: "10px",
@@ -138,9 +150,14 @@ const ResultsTable = (props) => {
 							BACK
 					</Button>
 				</Link>
-				<span  className="mt-6"></span>
-				<Link className="mt-3 float-right" to="/new" style={{ textDecoration: "none" }}>
-					<Button className="generate_btn" style={{
+				{ userid ?
+				(
+					<Link className="mt-3 float-right" to={{
+						pathname: "/new",
+						userid: userid,
+						username: username,
+					}} style={{ textDecoration: "none" }}>
+					<Button renderIcon={Add16} className="generate_btn" style={{
 						border:"0",
 						borderRadius: "10px",
 						fontSize: "1.3em",
@@ -148,6 +165,7 @@ const ResultsTable = (props) => {
 						textAlign: "center",
 						margin: "0.5em" }} kind="secondary">Create new Energiser</Button>
 				</Link>
+				):(<span  className="mt-6"></span>)}
 			</div>
 			<h1 className="text-center p-4">RESULTS TABLE</h1>
 			<div className="table-height ">
@@ -199,7 +217,7 @@ const ResultsTable = (props) => {
 				</thead>
 				{energiser.map((item) => (
 					<TableBody className="result-tbody" key={item.id}>
-						<RowTable energiser={item} />
+						<RowTable username= {username} userid={userid} energiser={item} />
 					</TableBody>
 				))}
 			</Table>

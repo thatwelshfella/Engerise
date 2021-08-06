@@ -14,6 +14,8 @@ function Description(props) {
 	let currentUser;
 	let currentDecUser;
 
+	console.log(props);
+
 	function clickedIncrement() {
 		if (typeof Storage !== "undefined") {
 			// let currentInc = localStorage.getItem(iconId);
@@ -120,6 +122,8 @@ function backButtonClicked(){
 					<Link to={{
 						pathname: "/results",
 						api: "/api/wholelist",
+						userid: props.location.userid,
+						username: props.location.username,
 						searchCriteria: null,
 					}} style={{ textDecoration: "none" }}>
 						<Button className="generate_btn btnClass" onClick={backButtonClicked} style={{

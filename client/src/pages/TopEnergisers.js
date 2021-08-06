@@ -32,6 +32,8 @@ const TopEnergisers = (props) => {
 										time: item.time,
 										upvote: item.upvote,
 										downvote: item.downvote,
+										userid: props.userid,
+										username: props.username,
 									}}
 								>
 									{item.name}
