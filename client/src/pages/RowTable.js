@@ -39,6 +39,8 @@ function RowTable(props) {
 						time: props.energiser.time,
 						upvote: props.energiser.upvote,
 						downvote: props.energiser.downvote,
+						userid: props.userid,
+						username: props.username,
 					}}
 				>
 					{props.energiser.name}

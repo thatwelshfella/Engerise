@@ -3,10 +3,9 @@ import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import Tags from "./Tags";
 import { Button } from "carbon-components-react";
+import { Search24 } from "@carbon/icons-react";
 
-function GenerateDiv() {
-	//   const [searchData, setSearchData] = useState(data);
-
+function GenerateDiv(props) {
 	const [searchRes, setSearchRes] = useState("");
 	const search = (searchVal) => {
 		setSearchRes(searchVal);
@@ -30,6 +29,7 @@ function GenerateDiv() {
 							textAlign: "center",
 						}}
 						kind="secondary"
+						renderIcon={Search24}
 					>
 						<Link
 							to={{
@@ -46,7 +46,7 @@ function GenerateDiv() {
 			</div>
 			<br />
 			<div className="row justify-content-center">
-				<Tags />
+				<Tags username= {props.username} userid={props.userid} />
 			</div>
 			<br />
 			<div className="d-flex justify-content-center">
