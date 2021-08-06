@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import { Button } from "carbon-components-react";
+import Timer from "./Timer";
 import { Breadcrumb, BreadcrumbItem } from "carbon-components-react";
 
 function Description(props) {
@@ -106,31 +108,33 @@ function Description(props) {
 		};
 
 
-				return (
-
-	
+	return (
 		<div className="font">
-		 <p className="m-2 crumb">
-			<Breadcrumb>
+    			<Breadcrumb>
 				<BreadcrumbItem href="/">Home</BreadcrumbItem>{" "}
 				<BreadcrumbItem href="/results/">Results</BreadcrumbItem>
 			</Breadcrumb>
-			</p>
-
-			<div className=" bg-light p-5">
-				<div className="container col d-flex flex-column align-items-start">
-					<div className="h3 undeline">
+    
+			<div className="d-flex align-items-center justify-content-center bg-light" >
+				<div className="col-8 p-5">
+					<div className="container col d-flex flex-column align-items-start">
+						<div className="h3 undeline">
 						Energiser Name : {describeMe.name}
+						</div>
+							<hr />
+						<div className="h5 mt-1">
+							Recommended Time : {describeMe.time}
+						</div>
+							<hr></hr>
+						<div className="h5 mt-1">
+							Description : {describeMe.description}
+						</div>
+							<hr></hr>
 					</div>
-					<hr />
-					<div className="h5 mt-1">Time per person : {describeMe.time}</div>
-					<hr></hr>
+				</div>
+				<div>
+					<Timer energiserTime={describeMe.time}></Timer>
 
-<div className="h5 mt-1">
-		Description : {describeMe.description}
-</div>
-
-    					<hr></hr>
 				</div>
 			</div>
 		<div className="col d-flex flex-row justify-content-center p-4">
