@@ -12,7 +12,8 @@ import {
 } from "carbon-components-react";
 import { Add24, ArrowLeft24 } from "@carbon/icons-react";
 
-const NewEnergiser = () => {
+
+const NewEnergiser = (props) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [time, setTime] = useState("5 Minutes");
@@ -73,7 +74,7 @@ const NewEnergiser = () => {
                             setTitle("");
                         }
                     })
-                    .catch((err) => setRepeatModalShow(true));
+                    .catch(() => setRepeatModalShow(true));
             }
     }
 	return (
@@ -114,12 +115,8 @@ const NewEnergiser = () => {
 				</div>
 				<hr></hr>
 				<div>
-					{/* <label className="energiserLabel">Energiser Time: </label>
-                <select className="newEnergiserInput" name="time" onChange={handleChange}>
-                    <option>5 Minutes</option>
-                    <option>10 Minutes</option>
-                    <option>15 Minutes</option>
-                </select> */}
+
+
 					<Select
 						defaultValue="placeholder-item"
 						helperText="The Expected time of the new Energiser"
@@ -142,12 +139,8 @@ const NewEnergiser = () => {
 				</div>
 				<hr></hr>
 				<div>
-					{/* <label className="energiserLabel">Difficulty: </label>
-                <select className="newEnergiserInput" name="difficulty" onChange={handleChange}>
-                    <option>Easy</option>
-                    <option>Medium</option>
-                    <option>Difficult</option>
-                </select> */}
+
+
 					<Select
 						defaultValue="placeholder-item"
 						helperText="The difficulty level of the new Energiser"
@@ -170,15 +163,8 @@ const NewEnergiser = () => {
 				</div>
 				<hr></hr>
 				<div>
-					{/* <p className="formfield">
-                    <label className="energiserLabel">Description: </label>
-                    <textarea
-                    className="energiseTextarea"
-                    name="description"
-                    value={description}
-                    onChange={handleChange}
-                    />
-                </p> */}
+				
+              
 					<TextArea
 						helperText="Can Accept any characters, Letter and special characters"
 						type="text"
@@ -198,16 +184,7 @@ const NewEnergiser = () => {
 						}}
 					/>
 				</div>
-				{/* <div>
-                <label className="energiserLabel">The URL: </label>
-                <input
-                className="my-input"
-                type="text"
-                name="url"
-                value={url}
-                onChange={handleChange}
-                />
-            </div> */}
+
 				<hr></hr>
 				<div className="mt-3 d-flex justify-content-center detail-div text-center">
 	
@@ -220,6 +197,7 @@ const NewEnergiser = () => {
 							fontSize: "1.3em",
 							background: "#ED4343",
 							textAlign: "center",
+
 						}}
 						onClick={AddNewEnergiser}
 						renderIcon={Add24}
@@ -248,6 +226,7 @@ const NewEnergiser = () => {
 			</div>
             <br></br>
 		</div>
+
 	);
 };
 

@@ -92,6 +92,7 @@
 		"node": "^12 || ^14",
 		"npm": "^6 || ^7"
 	},
+
 	"jest": {
 		"roots": [
 			"<rootDir>/client/src"
@@ -133,5 +134,9 @@
 			"@testing-library/jest-dom/extend-expect"
 		],
 		"testEnvironment": "jsdom"
+
+
 	}
 }
+
+

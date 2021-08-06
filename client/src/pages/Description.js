@@ -6,6 +6,7 @@ function Description(props) {
     const [upvote, setUpvote] = useState(0);
 	const [downvote, setDownvote] = useState(0);
 
+
 	// These next 5 lines capture from the URL the ID of the energiser that we want to render
 	const search = props.location.search; // returns the URL query String
 	const params = new URLSearchParams(search);
@@ -47,6 +48,7 @@ function Description(props) {
 			} else {
 				document.getElementById("result").innerHTML =
 					"Sorry, your browser does not support web storage...";
+
 			}
 		}
 
@@ -150,7 +152,9 @@ function Description(props) {
 					></FaThumbsDown>
 					<p className="m-2">{downvote}</p>
 				</div>
+
 			</div> 
+
 		</div>
 				);
 			} 
