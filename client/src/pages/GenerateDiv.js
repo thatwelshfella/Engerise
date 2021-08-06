@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import Tags from "./Tags";
 import { Button } from "carbon-components-react";
+import { Search24 } from "@carbon/icons-react";
 
 function GenerateDiv() {
 	//   const [searchData, setSearchData] = useState(data);
@@ -30,6 +31,7 @@ function GenerateDiv() {
 							textAlign: "center",
 						}}
 						kind="secondary"
+						renderIcon={Search24}
 					>
 						<Link
 							to={{

@@ -15,7 +15,9 @@ const TopEnergisers = (props) => {
 
 	return (
 		<div className="pt-2 border border-dark">
-			<h4 className="text-center WhatIsAnEnergiser" data-testid="TopEnergisers">
+			<h4
+				className="text-center WhatIsAnEnergiser"
+			>
 				Top Favourite Energisers
 			</h4>
 			<table className="container table">
@@ -24,19 +26,7 @@ const TopEnergisers = (props) => {
 					<tbody key={item.id}>
 						<tr>
 							<td className="topEnergiserName">
-								<Link
-									to={{
-										pathname: `/description/${item.id}`,
-										name: item.name,
-										id: item.id,
-										description: item.description,
-										time: item.time,
-										upvote: item.upvote,
-										downvote: item.downvote,
-									}}
-								>
-									{item.name}
-								</Link>
+								<a href={`/description?id=${item.id}`}>{item.name}</a>
 							</td>
 							{/* <td>
 								<td className="tag">{item.tag}</td>

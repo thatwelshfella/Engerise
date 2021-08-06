@@ -7,14 +7,13 @@ function Tags() {
 		<div
 			style={{ textAlign: "center" }}
 			className="d-flex justify-content-center align-items-center"
-			data-testid="Tags"
-		>
+			>
 			{"Tags:  "}
 			<Tag type="gray" title="Clear Filter">
 				<Link
 					className="filterTag"
 					to={{
-						pathname: "/results",
+						pathname: "/results/",
 						api: "/api/easy",
 					}}
 				>
@@ -25,7 +24,7 @@ function Tags() {
 				<Link
 					className="filterTag"
 					to={{
-						pathname: "/results",
+						pathname: "/results/",
 						api: "/api/medium",
 					}}
 				>
@@ -36,7 +35,7 @@ function Tags() {
 				<Link
 					className="filterTag"
 					to={{
-						pathname: "/results",
+						pathname: "/results/",
 						api: "/api/difficult",
 					}}
 				>
@@ -70,7 +69,7 @@ function Tags() {
 				<Link
 					className="filterTag"
 					to={{
-						pathname: "/results",
+						pathname: "/results/",
 						api: "/api/5minutes",
 					}}
 				>
@@ -93,7 +92,7 @@ function Tags() {
 				<Link
 					className="filterTag"
 					to={{
-						pathname: "/results",
+						pathname: "/results/",
 						api: "/api/15minutes",
 					}}
 				>
