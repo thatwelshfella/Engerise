@@ -23,6 +23,14 @@ router.get("/wholelist", function (req, res) {
 
 });
 
+router.get("/id/:id", function (req, res) {
+	const { id } = req.params;
+	pool
+		.query("SELECT * FROM energisers WHERE id = $1", [id])
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+
 router.get("/name/:title", function (req, res) {
 	const title = req.params.title;
 	console.log(title);

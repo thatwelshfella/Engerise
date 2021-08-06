@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import cyf_brand from "./cyf_brand.png";
+
+import energise from "./energise.png";
+
 import { Link } from "react-router-dom";
 import { Button } from "carbon-components-react";
 import { FaRegUser, FaSignOutAlt, FaSignInAlt, FaCreativeCommonsBy } from "react-icons/fa";
+
 
 function Heading() {
 
@@ -132,8 +136,12 @@ function Heading() {
 											</FaCreativeCommonsBy>
 								</Link></div>
 						)}
-							<h1>Energise!</h1>
+									
+						<a href="https://energisers.herokuapp.com">
+							<img className="elogo" src={energise} alt="Energise Logo" />
+						</a>
 						</div>
+
 					</div>
 					<hr></hr>
 				</div>

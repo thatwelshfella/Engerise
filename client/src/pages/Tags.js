@@ -7,13 +7,13 @@ function Tags(props) {
 		<div
 			style={{ textAlign: "center" }}
 			className="d-flex justify-content-center align-items-center"
-		>
+			>
 			{"Tags:  "}
 			<Tag type="gray" title="Clear Filter">
 				<Link
 					className="filterTag"
 					to={{
-						pathname: "/results",
+						pathname: "/results/",
 						api: "/api/easy",
 						userid: props.userid,
 						username: props.username,
@@ -26,7 +26,7 @@ function Tags(props) {
 				<Link
 					className="filterTag"
 					to={{
-						pathname: "/results",
+						pathname: "/results/",
 						api: "/api/medium",
 						userid: props.userid,
 						username: props.username,
@@ -39,7 +39,7 @@ function Tags(props) {
 				<Link
 					className="filterTag"
 					to={{
-						pathname: "/results",
+						pathname: "/results/",
 						api: "/api/difficult",
 						userid: props.userid,
 						username: props.username,
@@ -75,7 +75,7 @@ function Tags(props) {
 				<Link
 					className="filterTag"
 					to={{
-						pathname: "/results",
+						pathname: "/results/",
 						api: "/api/5minutes",
 						userid: props.userid,
 						username: props.username,
@@ -100,7 +100,7 @@ function Tags(props) {
 				<Link
 					className="filterTag"
 					to={{
-						pathname: "/results",
+						pathname: "/results/",
 						api: "/api/15minutes",
 						userid: props.userid,
 						username: props.username,

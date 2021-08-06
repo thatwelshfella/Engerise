@@ -92,31 +92,50 @@
 		"node": "^12 || ^14",
 		"npm": "^6 || ^7"
 	},
-	"jest":{
-		"roots": ["<rootDir>/client/src"],
-		"moduleFileExtensions": ["js", "jsx", "json", "node"],
-		"testPathIgnorePatterns": ["/node_modules/", "/public/"],
+
+	"jest": {
+		"roots": [
+			"<rootDir>/client/src"
+		],
+		"moduleFileExtensions": [
+			"js",
+			"jsx",
+			"json",
+			"node"
+		],
+		"testPathIgnorePatterns": [
+			"/node_modules/",
+			"/public/"
+		],
 		"collectCoverageFrom": [
-		  "./client/src/**/*.{js,jsx}",
-		  "!**/node_modules/**"
+			"./client/src/**/*.{js,jsx}",
+			"!**/node_modules/**"
 		],
-		"coverageReporters":["json", "lcov", "text", "clover"],
-		"collectCoverage":true,
+		"coverageReporters": [
+			"json",
+			"lcov",
+			"text",
+			"clover"
+		],
+		"collectCoverage": true,
 		"coverageThreshold": {
-		  "global": {
-			"branches": 80,
-			"functions": 80,
-			"lines": 80
-			
-		  }
+			"global": {
+				"branches": 80,
+				"functions": 80,
+				"lines": 80
+			}
 		},
-		"verbose":true,
+		"verbose": true,
 		"watchPlugins": [
-		  "jest-watch-typeahead/filename",
-		  "jest-watch-typeahead/testname"
+			"jest-watch-typeahead/filename",
+			"jest-watch-typeahead/testname"
 		],
-		"setupFilesAfterEnv":["@testing-library/jest-dom/extend-expect"],
-		"testEnvironment":"jsdom"
+		"setupFilesAfterEnv": [
+			"@testing-library/jest-dom/extend-expect"
+		],
+		"testEnvironment": "jsdom"
+
+
 	}
 }
 

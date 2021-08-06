@@ -28,11 +28,10 @@ const App = () => (
 			<Route path="/generate/" component={GenerateDiv}></Route>
 			<Route path="/results/" component={ResultsTable}></Route>
 			<Route path="/new/" component={NewEnergiser}></Route>
+			<Route path="/description" component={Description}></Route>
 			<Route path="/login/" component={Login}></Route>
 			<Route path="/profile/" component={Profile}></Route>
 			<Route path="/signup/" component={Signup}></Route>
-			<Route path="/description" exact><Description /></Route>
-			<Route path="/description/:id" component={Description}></Route>
 		</Switch>
 		<Footer />
 	</div>
