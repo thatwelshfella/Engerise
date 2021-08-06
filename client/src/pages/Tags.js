@@ -2,7 +2,7 @@ import React from "react";
 import { Tag } from "carbon-components-react";
 import { Link } from "react-router-dom";
 
-function Tags() {
+function Tags(props) {
 	return (
 		<div
 			style={{ textAlign: "center" }}
@@ -15,6 +15,8 @@ function Tags() {
 					to={{
 						pathname: "/results",
 						api: "/api/easy",
+						userid: props.userid,
+						username: props.username,
 					}}
 				>
 					Easy
@@ -26,6 +28,8 @@ function Tags() {
 					to={{
 						pathname: "/results",
 						api: "/api/medium",
+						userid: props.userid,
+						username: props.username,
 					}}
 				>
 					Medium
@@ -37,6 +41,8 @@ function Tags() {
 					to={{
 						pathname: "/results",
 						api: "/api/difficult",
+						userid: props.userid,
+						username: props.username,
 					}}
 				>
 					Difficult
@@ -71,6 +77,8 @@ function Tags() {
 					to={{
 						pathname: "/results",
 						api: "/api/5minutes",
+						userid: props.userid,
+						username: props.username,
 					}}
 				>
 					Short
@@ -94,6 +102,8 @@ function Tags() {
 					to={{
 						pathname: "/results",
 						api: "/api/15minutes",
+						userid: props.userid,
+						username: props.username,
 					}}
 				>
 					Long

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import MyModal from "./MyModal";
+import { Add16 } from "@carbon/icons-react";
 import { Button, TextArea, TextInput, Select, SelectItem } from "carbon-components-react";
 
-const NewEnergiser = () => {
+const NewEnergiser = (props) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [time, setTime] = useState("5 Minutes");
@@ -64,7 +65,7 @@ const NewEnergiser = () => {
                             setTitle("");
                         }
                     })
-                    .catch((err) => setRepeatModalShow(true));
+                    .catch(() => setRepeatModalShow(true));
             }
     }
 	return (
@@ -109,6 +110,8 @@ const NewEnergiser = () => {
                     defaultValue="placeholder-item"
                     helperText="The Expected time of the new Energiser"
                     id="select-1"
+                    name= "time"
+                    onChange={handleChange}
                     labelText="Energiser Time: "
                     invalidText="A valid value is required"
                     style={{
@@ -146,6 +149,8 @@ const NewEnergiser = () => {
                     defaultValue="placeholder-item"
                     helperText="The difficulty level of the new Energiser"
                     id="select-1"
+                    name= "difficulty"
+                    onChange={handleChange}
                     labelText="Difficulty: "
                     invalidText="A valid value is required"
                     style={{
@@ -216,6 +221,8 @@ const NewEnergiser = () => {
                 <Link to={{
                     pathname: "/results",
                     api: "/api/wholelist",
+                    userid: props.location.userid,
+                    username: props.location.username,
                     searchCriteria: null,
                 }} style={{ textDecoration: "none" }}>
                     <Button className="generate_btn" style={{
@@ -227,14 +234,15 @@ const NewEnergiser = () => {
 							textAlign: "center",
 						}}>Back</Button>
                 </Link>
-                <Button className="generate_btn" style={{
+                <Button renderIcon={Add16} className="generate_btn" style={{
 							border: "0",
 							borderRadius: "10px",
 							textDecoration: "none",
 							fontSize: "1.3em",
 							background: "#ED4343",
 							textAlign: "center",
-						}} onClick={AddNewEnergiser}>Add</Button>
+						}} onClick={AddNewEnergiser}>Add
+                </Button>
             </div>
             <MyModal body = {modalBody} header = "Creating an Energiser" show={modalShow}
                 onHide={() => setModalShow(false)} />
