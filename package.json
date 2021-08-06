@@ -80,6 +80,7 @@
 		"carbon-icons": "^7.0.7",
 		"dotenv": "^8.6.0",
 		"express": "^4.17.1",
+		"framer-motion": "^4.1.17",
 		"helmet": "^4.6.0",
 		"jest": "^27.0.6",
 		"jest-watch-typeahead": "^0.6.4",
@@ -92,32 +93,46 @@
 		"node": "^12 || ^14",
 		"npm": "^6 || ^7"
 	},
-	"jest":{
-		"roots": ["<rootDir>/client/src"],
-		"moduleFileExtensions": ["js", "jsx", "json", "node"],
-		"testPathIgnorePatterns": ["/node_modules/", "/public/"],
+	"jest": {
+		"roots": [
+			"<rootDir>/client/src"
+		],
+		"moduleFileExtensions": [
+			"js",
+			"jsx",
+			"json",
+			"node"
+		],
+		"testPathIgnorePatterns": [
+			"/node_modules/",
+			"/public/"
+		],
 		"collectCoverageFrom": [
-		  "./client/src/**/*.{js,jsx}",
-		  "!**/node_modules/**"
+			"./client/src/**/*.{js,jsx}",
+			"!**/node_modules/**"
 		],
-		"coverageReporters":["json", "lcov", "text", "clover"],
-		"collectCoverage":true,
+		"coverageReporters": [
+			"json",
+			"lcov",
+			"text",
+			"clover"
+		],
+		"collectCoverage": true,
 		"coverageThreshold": {
-		  "global": {
-			"branches": 80,
-			"functions": 80,
-			"lines": 80
-			
-		  }
+			"global": {
+				"branches": 80,
+				"functions": 80,
+				"lines": 80
+			}
 		},
-		"verbose":true,
+		"verbose": true,
 		"watchPlugins": [
-		  "jest-watch-typeahead/filename",
-		  "jest-watch-typeahead/testname"
+			"jest-watch-typeahead/filename",
+			"jest-watch-typeahead/testname"
 		],
-		"setupFilesAfterEnv":["@testing-library/jest-dom/extend-expect"],
-		"testEnvironment":"jsdom"
+		"setupFilesAfterEnv": [
+			"@testing-library/jest-dom/extend-expect"
+		],
+		"testEnvironment": "jsdom"
 	}
 }
-
-
