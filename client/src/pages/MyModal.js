@@ -34,14 +34,30 @@ function MyModal(props){
                                             background: "#ED4343",
                                             textAlign: "center",
                                           }} onClick={props.onHide}>Close</Button>
-                                        </Link>) : (<Button style={{
-                                        border: "0",
-                                        borderRadius: "10px",
-                                        textDecoration: "none",
-                                        fontSize: "1.3em",
-                                        background: "#ED4343",
-                                        textAlign: "center",
-                                      }} onClick={props.onHide}>Close</Button>)}
+                                        </Link>) : (
+                                        props.nameupdated ? (<Link to={{
+                                          pathname: "/profile",
+                                          forload: 1,
+                                      }} style={{ textDecoration: "none" }}>
+                                          <Button style={{
+                                              border: "0",
+                                              borderRadius: "10px",
+                                              textDecoration: "none",
+                                              fontSize: "1.3em",
+                                              background: "#ED4343",
+                                              textAlign: "center",
+                                            }} onClick={props.onHide}>Close</Button>
+                                          </Link>):
+                                          (<Button style={{
+                                          border: "0",
+                                          borderRadius: "10px",
+                                          textDecoration: "none",
+                                          fontSize: "1.3em",
+                                          background: "#ED4343",
+                                          textAlign: "center",
+                                        }} onClick={props.onHide}>Close</Button>
+                                          )
+                                      )}
                 </Modal.Footer>
             </Modal>);
 }

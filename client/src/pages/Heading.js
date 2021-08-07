@@ -84,7 +84,6 @@ function Heading() {
 											</FaSignOutAlt>
 										</Link><Link to={{
 											pathname: "/profile",
-											userid: userid,
 											searchCriteria: null,
 										}} style={{ textDecoration: "none" }}>
 										{/* <div className="d-flex align-items-center m-4"> */}

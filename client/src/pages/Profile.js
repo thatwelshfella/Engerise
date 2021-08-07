@@ -6,35 +6,88 @@ import { Button, TextInput, Select, SelectItem } from "carbon-components-react";
 const Profile = (props) => {
     const [userName, setUserName] = useState("");
     const [className, setClassName] = useState("London Class 7");
-    const [userProfile, setUserProfile] = useState([]);
+    const [email, setEmail] = useState("");
+    // const [userProfile, setUserProfile] = useState([]);
     const [password, setPassword] = useState([]);
-    const [modalBody, setModalBody] = useState("");
-    const [modalShow, setModalShow] = React.useState(false);
-    const [missingModalShow, setMissingModalShow] = React.useState(false);
-    const [matchedModal, setMatchedModal] = React.useState(false);
-    const [repeatModalShow, setRepeatModalShow] = React.useState(false);
+    const [modalShow, setModalShow] = useState(false);
+    const [missingModalShow, setMissingModalShow] = useState(false);
+    const [matchedModal, setMatchedModal] = useState(false);
+    const [errorModalShow, setErrorModalShow] = useState(false);
+    const [nameUpdated, setNameUpdated] = useState(false);
+    const [oldUserName, setOldUserName] = useState("");
+    const [userid, setUserid] = useState(0);
+
+	if (props.location.forload == 1){
+		window.location.reload(false);
+	}
+
+	// useEffect(() => {
+	// 	setUserid(localStorage.getItem("loginUserid"));
+    //     console.log("userd: " , userid);
+	// }, [userid]);
+
 
     function handleChange(event) {
         if (event.target.name === "userName") {
-          setUserName(event.target.value);
-          setModalBody("The New user " + event.target.value + " has been created successfully");
-        }
+            setUserName(event.target.value);
+          } else if (event.target.name === "email") {
+              setEmail(event.target.value);
+          } else if (event.target.name === "className") {
+              setClassName(event.target.value);
+          } else if (event.target.name === "password") {
+              setPassword(event.target.value);
+          }
       }
 
       useEffect(() => {
-          console.log(props.location.userid);
-		fetch(`/api/profile/${props.location.userid}`)
+        const currentUser = localStorage.getItem("loginUserid");
+        setUserid(currentUser);
+        fetch(`/api/profile/${currentUser}`)
 			.then((res) => res.json())
 			.then((data) => {
-                console.log("data: ", data);
-					setUserProfile(data);
+            //    setUserProfile(data);
+               setUserName(data[0].user_name);
+               setEmail(data[0].email);
+               setClassName(data[0].class);
+               setPassword(data[0].password);
+               setOldUserName(data[0].user_name);
 			});
-	}, []);
+        }, []);
 
-    function addNewUser(){
-        console.log("Hi");
+
+    function updateUser(){
+        let UserInfo={
+            user_id: userid,
+            name: userName,
+            class: className,
+            email: email,
+            password: password,
+        };
+
+        if (oldUserName != userName){
+            setNameUpdated(true);
+        }
+
+        const requestOptions = {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(UserInfo),
+        };
+        fetch("../api/updateuser/", requestOptions)
+            .then((response) => response.json())
+            .then((res) => {
+                if(res){
+                    if (typeof Storage !== "undefined") {
+                        localStorage.setItem("loginUsername", userName);
+                    } else {
+                        document.getElementById("result").innerHTML =
+                            "Sorry, your browser does not support web storage...";
+                    }
+                    setModalShow(true);
+                }
+            })
+            .catch(() => setErrorModalShow(true));
     }
-
 	return (
 		<div className="d-flex flex-column align-items-center justify-content-center font">
             <div>
@@ -42,7 +95,7 @@ const Profile = (props) => {
                     // helperText="Can Accept any characters, Letter and special characters"
                     type="text"
                     name="userName"
-                    value={userProfile.user_name}
+                    value={userName}
                     onChange={handleChange}
                     invalidText="A valid value is required"
                     labelText="Your Name: "
@@ -63,11 +116,11 @@ const Profile = (props) => {
                     // helperText="Can Accept any characters, Letter and special characters"
                     type="text"
                     name="email"
-                    value={userProfile.email}
+                    value={email}
                     onChange={handleChange}
                     invalidText="A valid value is required"
-                    labelText="Your Name: "
-                    placeholder="The new user Name"
+                    labelText="Your Email: "
+                    placeholder="The new Email"
                     style={{
                         border: "0",
                         borderRadius: "10px",
@@ -83,7 +136,7 @@ const Profile = (props) => {
             <Select
                     name="className"
                     labelText="Your Class Name: "
-                    value={userProfile.class}
+                    value={className}
                     onChange={handleChange}
                     invalidText="A valid value is required"
                     style={{
@@ -123,7 +176,7 @@ const Profile = (props) => {
                 <TextInput
                     type="password"
                     name="password"
-                    value={userProfile.password}
+                    value={password}
                     onChange={handleChange}
                     invalidText="A valid value is required"
                     labelText="Your Password: "
@@ -161,17 +214,17 @@ const Profile = (props) => {
 							fontSize: "1.3em",
 							background: "#ED4343",
 							textAlign: "center",
-						}} onClick={addNewUser}>Update
+						}} onClick={updateUser}>Update
                 </Button>
             </div>
-            <MyModal body = {modalBody} header = "Sign up a new User" show={modalShow}
+            <MyModal body = "Your Information has been updated successfully" nameupdated = {nameUpdated} header = "Update User Information" show={modalShow}
                 onHide={() => setModalShow(false)} />
             <MyModal body = "Some Data is missing, Please fill the fields!" header = "Missing Data" show={missingModalShow}
                 onHide={() => setMissingModalShow(false)} />
             <MyModal body = "The Password is not matched with the Repeated Password!" header = "Wrong Password" show={matchedModal}
                 onHide={() => setMatchedModal(false)} />
-            <MyModal body = "This email address is already used, Kindly review the entered data!" header = "Repeated Data" show={repeatModalShow}
-                onHide={() => setRepeatModalShow(false)} />
+            <MyModal body = "There is an error in the provided information." header = "Error Data" show={errorModalShow}
+                onHide={() => setErrorModalShow(false)} />
         </div>
 	);
 };
