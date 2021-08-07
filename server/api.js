@@ -115,7 +115,6 @@ router.put("/upvote/:id", function (req, res) {
 router.put("/downvote/:id", function (req, res) {
 	const { id } = req.params;
 	// const { upvote } = req.body;
-	console.log(req.params);
 	pool
 		.query("UPDATE energisers SET downvote = downvote - 1 WHERE id = $1", [id])
 		.then((result) => res.json(result.rows))
@@ -163,6 +162,16 @@ router.post("/signup", function (req, res) {
 	});
 });
 
+router.put("/updateuser", function (req, res) {
+	const user = req.body;
+	console.log("updateuser ", user.user_id);
+		pool
+			.query("UPDATE profile_table SET user_name = $1, class = $2, email = $3, password = $4 WHERE id = $5",
+												[ user.name, user.class, user.email, user.password, user.user_id])
+			.then((result) => res.json(result.rows))
+			.catch((e) => console.error(e));
+});
+
 router.post("/userlogin", function (req, res) {
 	const user = req.body;
 	let date_ob = new Date();
@@ -177,7 +186,6 @@ router.post("/userlogin", function (req, res) {
 
 router.put("/userlogout", function (req, res) {
 	const user = req.body;
-	console.log(user.user_id);
 		pool
 			.query("UPDATE Loggin_table SET  is_Logging = $1 WHERE user_id = $2",[ false, user.user_id])
 			.then((result) => res.json(result.rows))
@@ -196,8 +204,9 @@ router.get("/user", function (req, res) {
 
 router.get("/profile/:userid", function (req, res) {
 	const { userid } = req.params;
+	console.log(userid);
 	pool
-		.query("SELECT * FROM profile_table WHERE id = $1," [userid])
+		.query("SELECT * FROM profile_table WHERE id = $1",  [ userid ])
 		.then((result) => res.json(result.rows))
 		.catch((e) => console.error(e));
 

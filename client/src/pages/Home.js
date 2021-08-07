@@ -17,6 +17,7 @@ export function Home(props) {
 		setUsername(localStorage.getItem("loginUsername"));
 		setUserid(localStorage.getItem("loginUserid"));
 	}, [userid, username]);
+
 	return (
 		<main role="main">
 			<div className="container-fluid min-vh-90 justify-space-between font">
