@@ -75,11 +75,12 @@ a:active {
 .logo{
 height: 60px;
 width: auto;
+display: none;
 }
 
 //Energise logo
 .elogo{
-height: 57px;
+height: 54px;
 width: auto;
 }
 
@@ -198,6 +199,10 @@ width: auto;
   @media (min-width: 768px) {
 .topEnergiserName a:link {
   font-size: 1.2em;
+}
+
+.logo {
+  display: flex;
 }
 
 .topEnergiserName a:visited {
