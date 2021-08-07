@@ -103,36 +103,37 @@ function Description(props) {
 
 	return (
 		<div className="font">
-    			<Breadcrumb>
+			<Breadcrumb>
 				<BreadcrumbItem href="/">Home</BreadcrumbItem>{" "}
 				<BreadcrumbItem href="/results/">Results</BreadcrumbItem>
 			</Breadcrumb>
-    
-			<div className="d-flex align-items-center justify-content-center bg-light" >
-				<div className="col-8 p-5">
-					<div className="container col d-flex flex-column align-items-start">
-						<div className="h3 undeline">
-						Energiser Name : {describeMe.name}
-						</div>
+
+			<div className="container-fluid align-items-center justify-content-center bg-light">
+				<div className="row">
+					<div className="col-12 col-md-6 col-lg-7 p-5">
+						<div className="container col d-flex flex-column align-items-start">
+							<div className="h3 undeline">
+								Energiser Name : {describeMe.name}
+							</div>
 							<hr />
-						<div className="h5 mt-1">
-							Recommended Time : {describeMe.time}
-						</div>
+							<div className="h5 mt-1">
+								Recommended Time : {describeMe.time}
+							</div>
 							<hr></hr>
-						<div className="h5 mt-1">
-							Description : {describeMe.description}
-						</div>
+							<div className="h5 mt-1">
+								Description : {describeMe.description}
+							</div>
 							<hr></hr>
+						</div>
+					</div>
+					<div className="col-12 col-md-6 col-lg-5 p-5 align-items-center">
+						<Timer energiserTime={describeMe.time}></Timer>
 					</div>
 				</div>
-				<div>
-					<Timer energiserTime={describeMe.time}></Timer>
-
-				</div>
 			</div>
-		<div className="col d-flex flex-row justify-content-center p-4">
-			<div className="d-flex align-items-center m-4">
-				<FaThumbsUp
+			<div className="col d-flex flex-row justify-content-center p-4">
+				<div className="d-flex align-items-center m-4">
+					<FaThumbsUp
 						onClick={incrementCounter}
 						size={25}
 						onMouseOver={({ target }) => (target.style.color = "green")}
@@ -149,11 +150,9 @@ function Description(props) {
 					></FaThumbsDown>
 					<p className="m-2">{downvote}</p>
 				</div>
-
-			</div> 
-
+			</div>
 		</div>
-				);
+	);
 			} 
 
 
