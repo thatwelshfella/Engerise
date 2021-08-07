@@ -5,7 +5,9 @@ import { PlayFilled16, PauseFilled16, Reset16 } from "@carbon/icons-react";
 import { motion } from "framer-motion";
 
 function Timer (props) {
-
+  if (!props.energiserTime) {
+		return null;
+	}
     let count = props.energiserTime;
     if (props.energiserTime === "5 Minutes"){
         count = 300;

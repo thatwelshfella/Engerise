@@ -19,8 +19,7 @@ function Description(props) {
 	// describeMe will be the energiser that we want to render
 	const [describeMe, setDescribeMe] = useState({});	
 
-	
-
+	//fetches description data from API
     useEffect(() => {
 		fetch(`/api/id/${Id}`)
 			.then((res) => res.json())
@@ -30,13 +29,8 @@ function Description(props) {
                 setDownvote(data[0].downvote);
 			});
 	}, [Id]);
-
-
    
-        
-
-
-		const [clickedInc, setClickedInc] = useState(false);
+        const [clickedInc, setClickedInc] = useState(false);
 		const [clickedDec, setClickedDec] = useState(false);
 		const userId = "user" + describeMe.id;
 		const userDecId = "userdec" + describeMe.id;
@@ -50,7 +44,6 @@ function Description(props) {
 			} else {
 				document.getElementById("result").innerHTML =
 					"Sorry, your browser does not support web storage...";
-
 			}
 		}
 
