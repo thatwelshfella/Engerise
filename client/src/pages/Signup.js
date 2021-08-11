@@ -28,21 +28,21 @@ const Signup = () => {
             setPassword(event.target.value);
         } else if (event.target.name === "repeatPassword") {
             setRepeatPassword(event.target.value);
-          if (password === event.target.value)
+          if (password === event.target.value){
             setMatchPassword("The password is match");
-          else
+          }else{
             setMatchPassword("The password is not match");
+          }
         }
       }
 
     function addNewUser(){
         if (password !== repeatPassword){
                 setMatchedModal(true);
-            }
-        else{
-            if (userName == "" || email == "" || password == "" || repeatPassword == ""){
-                setMissingModalShow(true);
             }else{
+                if (userName == "" || email == "" || password == "" || repeatPassword == ""){
+                    setMissingModalShow(true);
+                }else{
                     let newUser={
                         name: userName,
                         class: className,
@@ -69,7 +69,7 @@ const Signup = () => {
                                 setEmail("");
                             }
                         })
-                        .catch((err) => setRepeatModalShow(true));
+                        .catch(() => setRepeatModalShow(true));
                 }
         }
     }

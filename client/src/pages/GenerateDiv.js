@@ -51,7 +51,7 @@ function GenerateDiv(props) {
 			<br />
 			<div className="d-flex justify-content-center">
 				<p className="randomListText">
-					Don't know where to start? Try a{" "}
+					Do not know where to start? Try a{" "}
 					<Link
 						to={{
 							pathname: "/results",

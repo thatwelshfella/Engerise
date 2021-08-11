@@ -2,7 +2,6 @@ import Modal from "react-bootstrap/Modal";
 import { Button } from "carbon-components-react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Heading from "./Heading";
 
 function MyModal(props){
 

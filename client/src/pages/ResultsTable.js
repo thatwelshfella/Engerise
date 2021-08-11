@@ -27,7 +27,7 @@ import MyModal from "./MyModal";
 
 const ResultsTable = (props) => {
 	const [energiser, setEnergiser] = useState([]);
-
+	const [msgModalShow, setMsgModalShow] = useState(false);
     const [modalShow, setModalShow] = React.useState(false);
 	const [userid, setUserid] = useState(0);
 	const [username, setUsername] = useState("");
@@ -97,6 +97,10 @@ const ResultsTable = (props) => {
 		},
 	];
 
+	function disabledFeature(){
+		setMsgModalShow(true);
+	}
+
 	return (
 
 		<div>
@@ -126,7 +130,7 @@ const ResultsTable = (props) => {
 					onInputChange,
 					selectedRows,
 					getBatchActionProps,
-					getRowProps,
+					// getRowProps,
 					getTableProps,
 				}) => (
 					<TableContainer
@@ -155,7 +159,7 @@ const ResultsTable = (props) => {
 									}
 									onChange={onInputChange}
 								/>
-								<Link to="/new" style={{ textDecoration: "none" }}>
+								{userid ? (<Link to="/new" style={{ textDecoration: "none" }}>
 									<Button
 										style={{
 											background: "#ED4343",
@@ -164,7 +168,16 @@ const ResultsTable = (props) => {
 										renderIcon={Add24}
 									>Create
 									</Button>
-								</Link>
+								</Link>):(
+									<Button onClick = {disabledFeature}
+										style={{
+											background: "#ED4343",
+										}}
+										kind="primary"
+										renderIcon={Add24}
+									>Create
+									</Button>
+								)}
 							</TableToolbarContent>
 						</TableToolbar>
 						<Table {...getTableProps()}>
@@ -242,9 +255,9 @@ const ResultsTable = (props) => {
 // 			<h1 className="text-center p-4">RESULTS TABLE</h1>
 // 			<div className="table-height ">
 // 			<Table className="container table ">
-// 			 <Table className="container table table-success"> 
+// 			 <Table className="container table table-success">
 // 				<thead className="result-thead">
-// 				 <td>ID</td> 
+// 				 <td>ID</td>
 // 					<th className="set-pointer" scope="col" onClick={sortNum} >
 // 						<div className="fs-6 text" style={{ padding: "16px" }}>
 // 						Name of Energiser
@@ -295,7 +308,8 @@ const ResultsTable = (props) => {
 // 			</Table>
 // 			</div> */}
 
-
+	<MyModal body = "You need to login to create a new Energiser!" show={msgModalShow}
+                onHide={() => setMsgModalShow(false)} />
 </div>);
 };
 
