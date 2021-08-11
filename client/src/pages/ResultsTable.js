@@ -24,7 +24,9 @@ import MyModal from "./MyModal";
 const ResultsTable = (props) => {
 	const [energiser, setEnergiser] = useState([]);
 
-	const [modalShow, setModalShow] = React.useState(false);
+	const [msgModalShow, setMsgModalShow] = useState(false);
+    const [modalShow, setModalShow] = React.useState(false);
+
 	const [userid, setUserid] = useState(0);
 	const [username, setUsername] = useState("");
 
@@ -94,6 +96,10 @@ const ResultsTable = (props) => {
 		},
 	];
 
+	function disabledFeature(){
+		setMsgModalShow(true);
+	}
+
 	return (
 		<div>
 			<MyModal
@@ -119,7 +125,11 @@ const ResultsTable = (props) => {
 					getHeaderProps,
 					getTableContainerProps,
 					onInputChange,
-					getRowProps,
+
+					selectedRows,
+					getBatchActionProps,
+					// getRowProps,
+
 					getTableProps,
 				}) => (
 					<TableContainer {...getTableContainerProps()}>
@@ -129,7 +139,7 @@ const ResultsTable = (props) => {
 									persistent="true"
 									onChange={onInputChange}
 								/>
-								<Link to="/new" style={{ textDecoration: "none" }}>
+								{userid ? (<Link to="/new" style={{ textDecoration: "none" }}>
 									<Button
 										style={{
 											background: "#ED4343",
@@ -139,7 +149,16 @@ const ResultsTable = (props) => {
 									>
 										Create
 									</Button>
-								</Link>
+								</Link>):(
+									<Button onClick = {disabledFeature}
+										style={{
+											background: "#ED4343",
+										}}
+										kind="primary"
+										renderIcon={Add24}
+									>Create
+									</Button>
+								)}
 							</TableToolbarContent>
 						</TableToolbar>
 						<Table {...getTableProps()}>
@@ -175,100 +194,11 @@ const ResultsTable = (props) => {
 					</TableContainer>
 				)}
 			</DataTable>
-			{/*
-// 		<div className="res-div pt-4 font">
-//     <MyModal body = "Sorry! There is no match to your search criteria." header ="Search an Energiser" show={modalShow}
-//                 onHide={() => setModalShow(false)} />
-// 			<div className="mt-3 detail-div text-center hompageButtons">
-// 				<Link to={{
-// 							pathname: "/",
-// 							userid: userid,
-// 							username: username,
-// 						}} style={{ textDecoration: "none" }}>
-// 					<Button style={{
-// 						border:"0",
-// 						borderRadius: "10px",
-// 						fontSize: "1.3em",
-// 						background: "#ED4343",
-// 						textAlign: "center",
-// 						margin: "0.5em" }} kind="secondary">
-// 							BACK
-// 					</Button>
-// 				</Link>
-// 				{ userid ?
-// 				(
-// 					<Link className="mt-3 float-right" to={{
-// 						pathname: "/new",
-// 						userid: userid,
-// 						username: username,
-// 					}} style={{ textDecoration: "none" }}>
-// 					<Button renderIcon={Add16} className="generate_btn" style={{
-// 						border:"0",
-// 						borderRadius: "10px",
-// 						fontSize: "1.3em",
-// 						background: "#ED4343",
-// 						textAlign: "center",
-// 						margin: "0.5em" }} kind="secondary">Create new Energiser</Button>
-// 				</Link>
-// 				):(<span  className="mt-6"></span>)}
-// 			</div>
-// 			<h1 className="text-center p-4">RESULTS TABLE</h1>
-// 			<div className="table-height ">
-// 			<Table className="container table ">
-// 			 <Table className="container table table-success"> 
-// 				<thead className="result-thead">
-// 				 <td>ID</td> 
-// 					<th className="set-pointer" scope="col" onClick={sortNum} >
-// 						<div className="fs-6 text" style={{ padding: "16px" }}>
-// 						Name of Energiser
-// 						<CaretSort16 style={{ color: "#fa4d56", margin:"5px" }} />
-// 						</div>
-// 					</th>
-// 					<th className="set-pointer" scope="col" onClick={sortNum}>
-// 					<div className="fs-6 text" style={{ padding: "16px" }}>
-// 						Difficulty
-// 						<CaretSort16 style={{ color: "#fa4d56", margin:"5px" }} />
-// 						</div>
-// 					</th>
-// 					<th className="set-pointer" scope="col" onClick={sortNum}>
-// 					<div className="fs-6 text" style={{ padding: "16px" }}>
-// 						Recommended Time
-// 						<CaretSort16 style={{ color: "#fa4d56", margin:"5px" }} />
-// 						</div>
-// 					</th>
-// 					<th>
-// 					<div className="fs-6 text" style={{ padding: "16px" }}>
-// 						External Site
-// 						</div>
-// 					</th>
-// 					<th className="set-pointer" scope="col" onClick={sortNum}>
-// 					<div className="fs-6 text" style={{ padding: "16px" }}>
-// 						Upvotes
-// 						<CaretSort16 style={{ color: "#fa4d56", margin:"5px" }} />
-// 						</div>
-// 					</th>
-// 					<th className="set-pointer" scope="col" onClick={sortNum}>
-// 					<div className="fs-6 text" style={{ padding: "16px" }}>
-// 						Downvotes
-// 						<CaretSort16 style={{ color: "#fa4d56", margin:"5px" }} />
-// 						</div>
-// 					</th>
-// 					<th className="set-pointer" onClick={sortNum}>
-// 					<div className="fs-6 text" style={{ padding: "16px" }}>
-// 						Favorite
-// 						<CaretSort16 style={{ color: "#fa4d56", margin:"5px" }} />
-// 						</div>
-// 					</th>
-// 				</thead>
-// 				{energiser.map((item) => (
-// 					<TableBody className="result-tbody" key={item.id}>
-// 						<RowTable username= {username} userid={userid} energiser={item} />
-// 					</TableBody>
-// 				))}
-// 			</Table>
-// 			</div> */}
-		</div>
-	);
+
+	<MyModal body = "You need to login to create a new Energiser!" show={msgModalShow}
+                onHide={() => setMsgModalShow(false)} />
+</div>);
+
 };
 
 export default ResultsTable;

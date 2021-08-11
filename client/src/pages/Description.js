@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
-import { Button } from "carbon-components-react";
+// import { Button } from "carbon-components-react";
 import Timer from "./Timer";
 import { Breadcrumb, BreadcrumbItem } from "carbon-components-react";
+import MyModal from "./MyModal";
 
 function Description(props) {
     const [upvote, setUpvote] = useState(0);
 	const [downvote, setDownvote] = useState(0);
+	const [msgModalShow, setMsgModalShow] = useState(false);
+	const [uPModalShow, setUPModalShow] = useState(false);
+	const [downModalShow, setDownModalShow] = useState(false);
+	const [userid, setUserid] = useState(0);
 
+	useEffect(() => {
+		setUserid(localStorage.getItem("loginUserid"));
+	}, [ userid ]);
 
 	// These next 5 lines capture from the URL the ID of the energiser that we want to render
 	const search = props.location.search; // returns the URL query String
@@ -17,7 +25,7 @@ function Description(props) {
 	const [Id, setId] = useState(NumId);
 
 	// describeMe will be the energiser that we want to render
-	const [describeMe, setDescribeMe] = useState({});	
+	const [describeMe, setDescribeMe] = useState({});
 
 	//fetches description data from API
     useEffect(() => {
@@ -29,7 +37,7 @@ function Description(props) {
                 setDownvote(data[0].downvote);
 			});
 	}, [Id]);
-   
+
         const [clickedInc, setClickedInc] = useState(false);
 		const [clickedDec, setClickedDec] = useState(false);
 		const userId = "user" + describeMe.id;
@@ -57,46 +65,58 @@ function Description(props) {
 		}
 		// increment upvote function
 		const incrementCounter = () => {
-			if (!clickedInc) {
-				currentUser = localStorage.getItem(userId);
-				if (currentUser == null){
-					clickedIncrement();
-					setClickedInc(true);
-					setUpvote(upvote + 1);
-					const requestOptions = {
-						method: "PUT",
-						headers: { "Content-Type": "application/json" },
-						body: JSON.stringify({
-							title: "React Hooks PUT Request Example",
-							upvote: upvote,
-						}),
-					};
-					fetch(`../api/upvote/${describeMe.id}`, requestOptions)
-						.then((response) => response.json())
-						.then((err) => console.log(err));
+			if (userid){
+				if (!clickedInc) {
+					currentUser = localStorage.getItem(userId);
+					if (currentUser == null){
+						clickedIncrement();
+						setClickedInc(true);
+						setUpvote(upvote + 1);
+						const requestOptions = {
+							method: "PUT",
+							headers: { "Content-Type": "application/json" },
+							body: JSON.stringify({
+								title: "React Hooks PUT Request Example",
+								upvote: upvote,
+							}),
+						};
+						fetch(`../api/upvote/${describeMe.id}`, requestOptions)
+							.then((response) => response.json())
+							.then((err) => console.log(err));
+						}else{
+						setUPModalShow(true);
+						}
 				}
+			}else{
+				setMsgModalShow(true);
 			}
 		};
 		// decrement downvote function
 		const decrementCounter = () => {
-			if (!clickedDec) {
-				currentDecUser = localStorage.getItem(userDecId);
-				if (currentDecUser == null){
-					clickedDecrement();
-					setClickedDec(true);
-					setDownvote(downvote - 1);
-					const requestOptions = {
-						method: "PUT",
-						headers: { "Content-Type": "application/json" },
-						body: JSON.stringify({
-							title: "React Hooks PUT Request Example",
-							downvote: downvote,
-						}),
-					};
-					fetch(`../api/downvote/${describeMe.id}`, requestOptions)
-						.then((response) => response.json())
-						.then((err) => console.log(err));
+			if (userid){
+				if (!clickedDec) {
+					currentDecUser = localStorage.getItem(userDecId);
+					if (currentDecUser == null){
+						clickedDecrement();
+						setClickedDec(true);
+						setDownvote(downvote - 1);
+						const requestOptions = {
+							method: "PUT",
+							headers: { "Content-Type": "application/json" },
+							body: JSON.stringify({
+								title: "React Hooks PUT Request Example",
+								downvote: downvote,
+							}),
+						};
+						fetch(`../api/downvote/${describeMe.id}`, requestOptions)
+							.then((response) => response.json())
+							.then((err) => console.log(err));
+					}else{
+						setDownModalShow(true);
+					}
 				}
+			}else{
+				setMsgModalShow(true);
 			}
 		};
 
@@ -127,7 +147,7 @@ function Description(props) {
 						</div>
 					</div>
 					<div className="col-12 col-md-6 col-lg-5 p-5 align-items-center">
-						<Timer energiserTime={describeMe.time}></Timer>
+						<Timer energiserTime={describeMe.time} userid={userid}></Timer>
 					</div>
 				</div>
 			</div>
@@ -151,9 +171,15 @@ function Description(props) {
 					<p className="m-2">{downvote}</p>
 				</div>
 			</div>
+			<MyModal body = "You need to login to be able to vote!" show={msgModalShow}
+                onHide={() => setMsgModalShow(false)} />
+			<MyModal body = "You already voted up for this Energiser!" show={uPModalShow}
+                onHide={() => setUPModalShow(false)} />
+			<MyModal body = "You already voted down for this Energiser!" show={downModalShow}
+                onHide={() => setDownModalShow(false)} />
 		</div>
 	);
-			} 
+			}
 
 
 export default Description;

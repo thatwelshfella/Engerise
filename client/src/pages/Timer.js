@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Button } from "carbon-components-react";
 import { PlayFilled16, PauseFilled16, Reset16 } from "@carbon/icons-react";
 import { motion } from "framer-motion";
+import MyModal from "./MyModal";
 
 function Timer (props) {
   if (!props.energiserTime) {
@@ -19,6 +20,7 @@ function Timer (props) {
 
     const [time, setTime] = useState(count);
     const [timerOn, setTimerOn] = useState(false);
+    const [msgModalShow, setMsgModalShow] = useState(false);
 
     //time formater function
     const format = (time) => {
@@ -64,14 +66,22 @@ function Timer (props) {
           </div>
           <div>
             {!timerOn && time == count &&(
-              <Button className="generate_btn btnClass" label="start" onClick={() => setTimerOn(true)} style={{
-                  border:"0",
-                  borderRadius: "10px",
-                  fontSize: "1.3em",
-                  background: "#ED4343",
-                  textAlign: "center",
-                  width: "100%",
-                  margin: "0.5em" }} kind="secondary" renderIcon={PlayFilled16}>Start</Button>
+              props.userid ? (<Button className="generate_btn btnClass" label="start" onClick={() => setTimerOn(true)} style={{
+                border:"0",
+                borderRadius: "10px",
+                fontSize: "1.3em",
+                background: "#ED4343",
+                textAlign: "center",
+                width: "100%",
+                margin: "0.5em" }} kind="secondary" renderIcon={PlayFilled16}>Start</Button>):
+                      (<Button className="generate_btn btnClass" label="start" onClick={() => setMsgModalShow(true)} style={{
+                            border:"0",
+                            borderRadius: "10px",
+                            fontSize: "1.3em",
+                            background: "#ED4343",
+                            textAlign: "center",
+                            width: "100%",
+                            margin: "0.5em" }} kind="secondary" renderIcon={PlayFilled16}>Start</Button>)
                 )}
                 { timerOn && (
               <Button className="generate_btn btnClass" label="stop" onClick={() => setTimerOn(false)} style={{
@@ -102,6 +112,8 @@ function Timer (props) {
                   margin: "0.5em" }} kind="secondary" renderIcon={Reset16}>Reset</Button>
             )}
           </div>
+          <MyModal body = "You need to login to be able to start the timer!" show={msgModalShow}
+                onHide={() => setMsgModalShow(false)} />
         </div>
       );
     }

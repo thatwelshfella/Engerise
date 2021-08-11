@@ -4,7 +4,6 @@ import cyf_brand from "./cyf_brand.png";
 import energise from "./energise.png";
 
 import { Link } from "react-router-dom";
-import { Button } from "carbon-components-react";
 import { FaRegUser, FaSignOutAlt, FaSignInAlt, FaCreativeCommonsBy } from "react-icons/fa";
 
 
@@ -68,12 +67,6 @@ function Heading() {
 									pathname: "/",
 									searchCriteria: null,
 								}} style={{ textDecoration: "none" }}>
-									{/* <Button kind="danger--tertiary" className="generate_btn" onClick={logoutUser} style={{
-											border: "0",
-											borderRadius: "10px",
-											fontSize: "1em",
-											marginTop: "1em",
-										}}>Logout {username}</Button> */}
 											<FaSignOutAlt onClick={logoutUser} title="Log Out" size={25} style={{
 												marginTop: "2em",
 												marginRight: "3em",
@@ -86,7 +79,6 @@ function Heading() {
 											pathname: "/profile",
 											searchCriteria: null,
 										}} style={{ textDecoration: "none" }}>
-										{/* <div className="d-flex align-items-center m-4"> */}
 												<FaRegUser onClick={userProfile} title= {username+" Profile"} size={25} style={{
 											marginTop: "2em",
 											marginRight: "3em",
@@ -101,12 +93,6 @@ function Heading() {
 									pathname: "/login",
 									searchCriteria: null,
 								}} style={{ textDecoration: "none" }}>
-									{/* <Button kind="danger--tertiary" className="generate_btn" style={{
-											border: "0",
-											borderRadius: "10px",
-											fontSize: "1em",
-											marginTop: "1em",
-										}}>Login {username}</Button> */}
 										<FaSignInAlt title="Login" size={25} style={{
 												marginTop: "2em",
 												marginRight: "3em",
@@ -119,12 +105,6 @@ function Heading() {
 									pathname: "/signup",
 									searchCriteria: null,
 								}} style={{ textDecoration: "none" }}>
-									{/* <Button kind="danger--tertiary" className="generate_btn" style={{
-											border: "0",
-											borderRadius: "10px",
-											fontSize: "1em",
-											marginTop: "1em",
-										}}>Sign up </Button> */}
 										<FaCreativeCommonsBy title="Sign up" size={25} style={{
 												marginTop: "2em",
 												marginRight: "3em",
@@ -135,7 +115,6 @@ function Heading() {
 											</FaCreativeCommonsBy>
 								</Link></div>
 						)}
-									
 						<a href="https://energisers.herokuapp.com">
 							<img className="elogo" src={energise} alt="Energise Logo" />
 						</a>

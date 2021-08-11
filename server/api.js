@@ -1,4 +1,4 @@
-import { query, Router } from "express";
+import { Router } from "express";
 require("dotenv").config();
 
 const router = new Router();
@@ -130,7 +130,7 @@ router.post("/new", function (req, res) {
 		if (result.rows.length > 0) {
 			return res
 			.status(400)
-			.send('An Energiser with the same name is already exists!');
+			.send("An Energiser with the same name is already exists!");
 		} else {
 			pool
 				.query("Insert Into energisers (name, time, urls, description, external, tag, upvote, downvote) values ($1, $2, $3, $4, $5, $6, $7, $8)",
@@ -151,7 +151,7 @@ router.post("/signup", function (req, res) {
 		if (result.rows.length > 0) {
 			return res
 			.status(400)
-			.send('A User Email with the same address is already exists!');
+			.send("A User Email with the same address is already exists!");
 		} else {
 			pool
 				.query("Insert Into profile_table (user_name, class, email, password, signup_Date) values ($1, $2, $3, $4, $5)",
