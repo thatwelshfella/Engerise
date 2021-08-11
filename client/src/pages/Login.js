@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import MyModal from "./MyModal";
-import { Button, TextInput } from "carbon-components-react";
+import {
+	Button,
+	TextInput,
+	Breadcrumb,
+	BreadcrumbItem,
+    } from "carbon-components-react";
+    import { Login24 } from "@carbon/icons-react";
 
 const Login = () => {
     const [ email, setEmail] = useState("");
@@ -71,78 +77,96 @@ const Login = () => {
 
     }
 	return (
-		<div className="d-flex flex-column align-items-center justify-content-center font">
-            <div>
-                <TextInput
-                    type="text"
-                    name="email"
-                    value={email}
-                    onChange={handleChange}
-                    invalidText="A valid value is required"
-                    labelText="Your Email Address: "
-                    placeholder="The new Email Address"
-                    style={{
-                        border: "0",
-                        borderRadius: "10px",
-                        textDecoration: "none",
-                        fontSize: "1.3em",
-                        width: "30em",
-                        textAlign: "left",
-                    }}
-                />
-            </div>
-            <hr></hr>
-            <div>
-                <TextInput
-                    type="password"
-                    name="password"
-                    value={password}
-                    onChange={handleChange}
-                    invalidText="A valid value is required"
-                    labelText="Your Password: "
-                    placeholder="The new Password"
-                    style={{
-                        border: "0",
-                        borderRadius: "10px",
-                        textDecoration: "none",
-                        fontSize: "1.3em",
-                        width: "30em",
-                        textAlign: "left",
-                    }}
-                />
-            </div>
-            <hr></hr>
-            <div className="mt-3 d-flex justify-content-center detail-div text-center">
-                <Link to={{
-                    pathname: "/",
-                    searchCriteria: null,
-                }} style={{ textDecoration: "none" }}>
-                    <Button className="generate_btn" style={{
+		<div className="container-fluid">
+			<Breadcrumb>
+				<BreadcrumbItem
+					className="crumb"
+					style={{ color: "red", paddingLeft: "0.5rem" }}
+					href="/"
+				>
+					Home
+				</BreadcrumbItem>
+			</Breadcrumb>
+			<div className="d-flex flex-column align-items-center justify-content-center font">
+				<div>
+					<TextInput
+						type="text"
+						name="email"
+						value={email}
+						onChange={handleChange}
+						invalidText="A valid value is required"
+						labelText="Your Email Address: "
+						placeholder="The new Email Address"
+						style={{
 							border: "0",
 							borderRadius: "10px",
+							textDecoration: "none",
 							fontSize: "1.3em",
-							background: "#ED4343",
-                            marginRight: "1.3em",
-							textAlign: "center",
-						}}>Back</Button>
-                </Link>
-                <Button className="generate_btn" style={{
+							width: "30em",
+							textAlign: "left",
+						}}
+					/>
+				</div>
+				<hr></hr>
+				<div>
+					<TextInput
+						type="password"
+						name="password"
+						value={password}
+						onChange={handleChange}
+						invalidText="A valid value is required"
+						labelText="Your Password: "
+						placeholder="The new Password"
+						style={{
+							border: "0",
+							borderRadius: "10px",
+							textDecoration: "none",
+							fontSize: "1.3em",
+							width: "30em",
+							textAlign: "left",
+						}}
+					/>
+				</div>
+				<hr></hr>
+				<div className="mt-3 d-flex justify-content-center detail-div text-center">
+					<Button
+						className="generate_btn"
+						style={{
 							border: "0",
 							borderRadius: "10px",
 							textDecoration: "none",
 							fontSize: "1.3em",
 							background: "#ED4343",
 							textAlign: "center",
-						}} onClick={userLogin}>Login
-                </Button>
-            </div>
-            <MyModal userid = {userid} username = {userName} body = {msgBody} header = "Login's succeeded" show={modalShow}
-                onHide={() => setModalShow(false)} />
-            <MyModal body = "Some Data is missing, Please enter all fields of the new energiser" header = "Missing Data" show={missingModalShow}
-                onHide={() => setMissingModalShow(false)} />
-            <MyModal body = "We can't find the user which match the data you entered!" header = "Wrong Data" show={errDataModal}
-                onHide={() => setErrDataModal(false)} />
-        </div>
+						}}
+						renderIcon={Login24}
+						onClick={userLogin}
+					>
+						Login
+					</Button>
+				</div>
+				<MyModal
+					userid={userid}
+					username={userName}
+					body={msgBody}
+					header="Login's succeeded"
+					show={modalShow}
+					onHide={() => setModalShow(false)}
+				/>
+				<MyModal
+					body="Some Data is missing, Please enter all fields of the new energiser"
+					header="Missing Data"
+					show={missingModalShow}
+					onHide={() => setMissingModalShow(false)}
+				/>
+				<MyModal
+					body="We can't find the user which match the data you entered!"
+					header="Wrong Data"
+					show={errDataModal}
+					onHide={() => setErrDataModal(false)}
+				/>
+			</div>
+		</div>
 	);
 };
 
