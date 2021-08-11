@@ -10,7 +10,7 @@ import {
 	Breadcrumb,
 	BreadcrumbItem,
 } from "carbon-components-react";
-import { Add24, ArrowLeft24 } from "@carbon/icons-react";
+import { Add24 } from "@carbon/icons-react";
 
 
 const NewEnergiser = (props) => {
