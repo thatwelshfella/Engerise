@@ -69,6 +69,9 @@
 		"webpack-dev-server": "^3.11.2",
 		"webpack-merge": "^5.8.0"
 	},
+	"browser": {
+		"crypto": false
+	},
 	"dependencies": {
 		"@babel/runtime": "^7.14.6",
 		"@carbon/icons-react": "^10.22.0",
@@ -78,6 +81,7 @@
 		"carbon-components": "^10.25.0",
 		"carbon-components-react": "^7.25.0",
 		"carbon-icons": "^7.0.7",
+		"crypto-js": "^4.1.1",
 		"dotenv": "^8.6.0",
 		"express": "^4.17.1",
 		"framer-motion": "^4.1.17",
@@ -86,6 +90,7 @@
 		"jest-watch-typeahead": "^0.6.4",
 		"morgan": "^1.10.0",
 		"pg": "^8.6.0",
+		"pg-promise": "^10.11.0",
 		"react-bootstrap": "^1.6.1",
 		"react-icons": "^4.2.0"
 	},

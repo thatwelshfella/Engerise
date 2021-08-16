@@ -46,6 +46,7 @@ const Login = () => {
             fetch(`../api/user?email=${email}&pass=${password}`)
                 .then((res) => res.json())
                 .then((data) => {
+
                     let newUserId = data[0].id;
                     let newUserName = data[0].user_name;
                     setUserid(newUserId);
