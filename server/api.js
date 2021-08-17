@@ -257,7 +257,32 @@ router.post("/userlogin", function (req, res) {
 	pool
 		.query(
 			"Insert Into Loggin_table (user_id, login_Date, is_Logging) values ($1, $2, $3)",
-			[user.user_id, date_ob, true]
+			[user.user_id, date_ob, user.class]
+		)
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+
+router.post("/lastused", function (req, res) {
+	const user = req.body;
+	let date_ob = new Date();
+	// const { upvote } = req.body;
+	pool
+		.query(
+			"Insert Into last_used (class, date_used, energiser_id) values ($1, $2, $3)",
+			[user.user_id, date_ob, user.energiser_id]
+		)
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+
+
+router.get("/lastused/:energiser", function (req, res) {
+	const { energiser } = req.params;
+	pool
+		.query(
+			"SELECT DISTINCT ON (profile_table.class) last_used.date_used, last_used.energiser_id, profile_table.class FROM last_used INNER JOIN profile_table ON last_used.class=profile_table.id WHERE last_used.energiser_id = $1 ORDER BY profile_table.class, last_used.date_used DESC",
+			[energiser]
 		)
 		.then((result) => res.json(result.rows))
 		.catch((e) => console.error(e));
@@ -329,5 +354,6 @@ router.get("/profile/:userid", function (req, res) {
 		.then((result) => res.json(result.rows))
 		.catch((e) => console.error(e));
 });
+
 
 export default router;
