@@ -281,7 +281,7 @@ router.get("/lastused/:energiser", function (req, res) {
 	const { energiser } = req.params;
 	pool
 		.query(
-			"SELECT DISTINCT ON (profile_table.class) last_used.date_used, last_used.energiser_id, profile_table.class FROM last_used INNER JOIN profile_table ON last_used.class=profile_table.id WHERE last_used.energiser_id = $1 ORDER BY profile_table.class, last_used.date_used DESC",
+			"SELECT DISTINCT ON (profile_table.class) last_used.date_used, last_used.energiser_id, profile_table.class FROM last_used INNER JOIN profile_table ON last_used.profile_id=profile_table.id WHERE last_used.energiser_id = $1 ORDER BY profile_table.class, last_used.date_used DESC",
 			[energiser]
 		)
 		.then((result) => res.json(result.rows))
