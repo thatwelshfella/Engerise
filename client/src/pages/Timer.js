@@ -21,34 +21,27 @@ function Timer(props) {
 	const [timerOn, setTimerOn] = useState(false);
 	const [msgModalShow, setMsgModalShow] = useState(false);
 
-  //log timer click function
-  function logTimerStart(id){
-console.log(id);
+	//log timer click function
+	function logTimerStart(id) {
+		let lastUsedApiData = {
+			user_id: props.userid,
+			energiser_id: props.energiser_id,
+		};
+		const requestOptions = {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(lastUsedApiData),
+		};
 
-                    let lastUsedApiData = {
-											user_id: props.userid,
-                      energiser_id: props.energiser_id,
-										};
-                        const requestOptions = {
-													method: "POST",
-													headers: { "Content-Type": "application/json" },
-													body: JSON.stringify(lastUsedApiData),
-												};
-
-                            fetch("../api/lastused/", requestOptions)
-                                .then((response) => response.json())
-                                .then((res) => {
-                                    if(res){
-                                        console.log("logged last used");
-                                    }
-                                })
-                                .catch((error) => console.log(error));
-                
-
-
-
-
-  }
+		fetch("../api/lastused/", requestOptions)
+			.then((response) => response.json())
+			.then((res) => {
+				if (res) {
+					console.log("logged last used");
+				}
+			})
+			.catch((error) => console.log(error));
+	}
 
 	//time formater function
 	const format = (time) => {
