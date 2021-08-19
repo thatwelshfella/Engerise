@@ -15,11 +15,12 @@ function LastUsed(props) {
 
 	return (
 		<div>
-			{lastUsed.map((x) => (
+			{lastUsed.length===0? <div>Be the first to use this energiser!</div>	:		lastUsed.map((x) => (
 				<div key={x.class}>
 					<div>{x.class} - {x.date_used.slice(0,10)}</div>
 				</div>
 			))}
+
 		</div>
 	);
 }

@@ -240,7 +240,7 @@ router.post("/userlogin", function (req, res) {
 	pool
 		.query(
 			"Insert Into Loggin_table (user_id, login_Date, is_Logging) values ($1, $2, $3)",
-			[user.user_id, date_ob, user.class]
+			[user.user_id, date_ob, true]
 		)
 		.then((result) => res.json(result.rows))
 		.catch((e) => console.error(e));
@@ -300,12 +300,14 @@ router.get("/user", function (req, res) {
 				hash = result.rows[0].password;
 				rows = result.rows;
 			} catch (err) {
+				console.log(err);
 				return res.json({ status: "Failed" });
 			}
 		})
 		.then(() => {
 			if (status === true) {
 				if (validate(pass, hash, salt)) {
+					console.log("PASSED VALIDATION");
 				} else {
 					return res.json({ status: "Failed" });
 				}
