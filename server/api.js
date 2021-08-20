@@ -33,7 +33,6 @@ router.get("/id/:id", function (req, res) {
 
 router.get("/name/:title", function (req, res) {
 	const title = req.params.title;
-	console.log(title);
 	pool
 		.query("SELECT * FROM energisers WHERE name = $1", [title])
 		.then((result) => res.json(result.rows))
@@ -105,8 +104,6 @@ router.get("/topEnergisers", function (req, res) {
 });
 router.put("/upvote/:id", function (req, res) {
 	const { id } = req.params;
-	// const { upvote } = req.body;
-	console.log(req.params);
 	pool
 		.query("UPDATE energisers SET upvote = upvote + 1 WHERE id = $1", [id])
 		.then((result) => res.json(result.rows))
@@ -175,12 +172,6 @@ let creepy = function (clear) {
 	};
 };
 
-// (C) TEST ENCRYPT
-// Save BOTH the password and salt into database or file
-let clearpass = "He110Wor!d";
-let hashIt = creepy(clearpass);
-console.log("===== HASHED PASSWORD + SALT =====");
-console.log(hashIt);
 
 // (D) VALIDATE PASSWORD
 let validate = function (userpass, hashedpass, salt) {
@@ -189,13 +180,6 @@ let validate = function (userpass, hashedpass, salt) {
 	userpass = hash.digest("hex");
 	return userpass == hashedpass;
 };
-
-// (E) TEST VALIDATE
-// clearpass = "FOOBAR";
-let validated = validate(clearpass, hashIt.hash, hashIt.salt);
-console.log("===== VALIDATION =====");
-console.log("Clear password: " + clearpass);
-console.log("Validation status: " + validated);
 
 ////////////////////////////////////////////////////
 
@@ -233,7 +217,6 @@ router.post("/signup", function (req, res) {
 router.put("/updateuser", function (req, res) {
 	const user = req.body;
 	let hashSalt = creepy(user.password);
-	console.log("updateuser ", user.user_id);
 	pool
 		.query(
 			"UPDATE profile_table SET user_name = $1, class = $2, email = $3, password = $4, salt = $6 WHERE id = $5",
@@ -263,6 +246,31 @@ router.post("/userlogin", function (req, res) {
 		.catch((e) => console.error(e));
 });
 
+router.post("/lastused", function (req, res) {
+	const user = req.body;
+	let date_ob = new Date();
+	date_ob.setDate(date_ob.getDate() + 1);
+	pool
+		.query(
+			"Insert Into last_used (profile_id, date_used, energiser_id) values ($1, $2, $3)",
+			[user.user_id, date_ob, user.energiser_id]
+		)
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+
+
+router.get("/lastused/:energiser", function (req, res) {
+	const { energiser } = req.params;
+	pool
+		.query(
+			"SELECT DISTINCT ON (profile_table.class) last_used.date_used, last_used.energiser_id, profile_table.class FROM last_used INNER JOIN profile_table ON last_used.profile_id=profile_table.id WHERE last_used.energiser_id = $1 ORDER BY profile_table.class, last_used.date_used DESC",
+			[energiser]
+		)
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+
 router.put("/userlogout", function (req, res) {
 	const user = req.body;
 	pool
@@ -287,14 +295,11 @@ router.get("/user", function (req, res) {
 			[email]
 		)
 		.then((result) => {
-			// console.log("SALTY", (JSON.stringify(result.rows)==true));
 			try {
-				console.log("SALTY", result.rows[0].salt);
 				salt = result.rows[0].salt;
 				hash = result.rows[0].password;
 				rows = result.rows;
 			} catch (err) {
-				console.log("CATCHING ERROR");
 				console.log(err);
 				return res.json({ status: "Failed" });
 			}
@@ -311,7 +316,6 @@ router.get("/user", function (req, res) {
 		.then(() => {
 			if (status === true) {
 				if (validate(pass, hash, salt)) {
-					console.log("SENDING ROWS");
 					res.json(rows);
 				}
 			} else {
@@ -323,11 +327,11 @@ router.get("/user", function (req, res) {
 
 router.get("/profile/:userid", function (req, res) {
 	const { userid } = req.params;
-	console.log(userid);
 	pool
 		.query("SELECT * FROM profile_table WHERE id = $1", [userid])
 		.then((result) => res.json(result.rows))
 		.catch((e) => console.error(e));
 });
+
 
 export default router;

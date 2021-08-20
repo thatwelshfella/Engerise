@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 // import { Button } from "carbon-components-react";
 import Timer from "./Timer";
+import LastUsed from "./LastUsed";
 import { Breadcrumb, BreadcrumbItem } from "carbon-components-react";
 import MyModal from "./MyModal";
 
@@ -144,10 +145,18 @@ function Description(props) {
 								Description : {describeMe.description}
 							</div>
 							<hr></hr>
+							<div className="h5 mt-1">
+								Last Used : <LastUsed energiser={Id} />
+							</div>
+							<hr></hr>
 						</div>
 					</div>
 					<div className="col-12 col-md-6 col-lg-5 p-5 align-items-center">
-						<Timer energiserTime={describeMe.time} userid={userid}></Timer>
+						<Timer
+							energiserTime={describeMe.time}
+							energiser_id={Id}
+							userid={userid}
+						></Timer>
 					</div>
 				</div>
 			</div>
@@ -171,12 +180,21 @@ function Description(props) {
 					<p className="m-2">{downvote}</p>
 				</div>
 			</div>
-			<MyModal body = "You need to login to be able to vote!" show={msgModalShow}
-                onHide={() => setMsgModalShow(false)} />
-			<MyModal body = "You already voted up for this Energiser!" show={uPModalShow}
-                onHide={() => setUPModalShow(false)} />
-			<MyModal body = "You already voted down for this Energiser!" show={downModalShow}
-                onHide={() => setDownModalShow(false)} />
+			<MyModal
+				body="You need to login to be able to vote!"
+				show={msgModalShow}
+				onHide={() => setMsgModalShow(false)}
+			/>
+			<MyModal
+				body="You already voted up for this Energiser!"
+				show={uPModalShow}
+				onHide={() => setUPModalShow(false)}
+			/>
+			<MyModal
+				body="You already voted down for this Energiser!"
+				show={downModalShow}
+				onHide={() => setDownModalShow(false)}
+			/>
 		</div>
 	);
 			}
