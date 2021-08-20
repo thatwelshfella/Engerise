@@ -249,7 +249,7 @@ router.post("/userlogin", function (req, res) {
 router.post("/lastused", function (req, res) {
 	const user = req.body;
 	let date_ob = new Date();
-	date_ob.setDate(date_ob.getDate() + 1);
+	// date_ob.setDate(date_ob.getDate() + 1);
 	pool
 		.query(
 			"Insert Into last_used (profile_id, date_used, energiser_id) values ($1, $2, $3)",
