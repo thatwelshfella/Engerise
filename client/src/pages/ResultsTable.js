@@ -1,4 +1,4 @@
-import React, { useState, useEffect, } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Favourite from "./Favourite";
 import {
@@ -16,6 +16,7 @@ import {
 	Button,
 	Breadcrumb,
 	BreadcrumbItem,
+	Pagination,
 } from "carbon-components-react";
 import { Add24 } from "@carbon/icons-react";
 
@@ -23,6 +24,12 @@ import MyModal from "./MyModal";
 
 const ResultsTable = (props) => {
 	const [energiser, setEnergiser] = useState([]);
+	const [page, setPage] = useState(1);
+	const [pageSize, setPageSize] = useState(10);
+	const handleChangePage = (event) => {
+		setPage(event.page);
+		setPageSize(event.pageSize);
+	};
 
 	const [msgModalShow, setMsgModalShow] = useState(false);
     const [modalShow, setModalShow] = React.useState(false);
@@ -138,7 +145,7 @@ const ResultsTable = (props) => {
 								<TableToolbarSearch
 									persistent="true"
 									onChange={onInputChange}
-								/>
+									/>
 								{userid ? (<Link to="/new" style={{ textDecoration: "none" }}>
 									<Button
 										style={{
@@ -146,16 +153,16 @@ const ResultsTable = (props) => {
 										}}
 										kind="primary"
 										renderIcon={Add24}
-									>
+										>
 										Create
 									</Button>
 								</Link>):(
 									<Button onClick = {disabledFeature}
-										style={{
-											background: "#ED4343",
-										}}
-										kind="primary"
-										renderIcon={Add24}
+									style={{
+										background: "#ED4343",
+									}}
+									kind="primary"
+									renderIcon={Add24}
 									>Create
 									</Button>
 								)}
@@ -164,9 +171,9 @@ const ResultsTable = (props) => {
 						<Table {...getTableProps()}>
 							<TableHead>
 								<TableRow>
-									{headers.map((header) => (
-										<TableHeader
-											{...getHeaderProps({ header, isSortable: true })}
+									{headers.map((header, index) => (
+										<TableHeader key={index}
+										{...getHeaderProps({ header, isSortable: true })}
 										>
 											{header.header}
 										</TableHeader>
@@ -174,17 +181,17 @@ const ResultsTable = (props) => {
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{rows.map((row) => (
+								{rows.slice(page * pageSize - pageSize, page * pageSize).map((row) => (
 									<TableRow key={row.id}>
 										{row.cells.map((cell) => (
 											<TableCell key={cell.id}>
 												{cell.id === `${row.id}:name` ? (
 													<a href={`/description?id=${row.id}`}>{cell.value}</a>
-												) : cell.value === row.id ? (
-													<Favourite id={row.id} />
-												) : (
-													cell.value
-												)}
+													) : cell.value === row.id ? (
+														<Favourite id={row.id} />
+														) : (
+															cell.value
+															)}
 											</TableCell>
 										))}
 									</TableRow>
@@ -194,6 +201,21 @@ const ResultsTable = (props) => {
 					</TableContainer>
 				)}
 			</DataTable>
+			<Pagination
+				backwardText="Previous page"
+				forwardText="Next page"
+				itemsPerPageText="Items per page:"
+				page={page}
+				pageNumberText="Page Number"
+				pageSize={pageSize}
+				pageSizes={[
+				10,
+				20,
+				50,
+				]}
+				totalItems={energiser.length}
+				onChange={handleChangePage}
+			/>
 
 	<MyModal body = "You need to login to create a new Energiser!" show={msgModalShow}
                 onHide={() => setMsgModalShow(false)} />
