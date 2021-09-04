@@ -176,12 +176,11 @@ const Profile = (props) => {
                 <TextInput
                     type="password"
                     name="password"
-                    value={password}
                     onChange={handleChange}
                     invalidText="A valid value is required"
                     labelText="Your Password: "
                     // helperText={matchPassword}
-                    placeholder="The Password"
+                    placeholder="New Password"
                     style={{
                         border: "0",
                         borderRadius: "10px",
