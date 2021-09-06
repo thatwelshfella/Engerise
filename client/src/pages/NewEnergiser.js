@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import MyModal from "./MyModal";
 import {
 	Button,
@@ -13,7 +12,7 @@ import {
 import { Add24 } from "@carbon/icons-react";
 
 
-const NewEnergiser = (props) => {
+const NewEnergiser = () => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [time, setTime] = useState("5 Minutes");
@@ -23,11 +22,9 @@ const NewEnergiser = (props) => {
     const [modalShow, setModalShow] = React.useState(false);
     const [missingModalShow, setMissingModalShow] = React.useState(false);
     const [repeatModalShow, setRepeatModalShow] = React.useState(false);
-    // const [oneEnergiser, setOneEnergiser] = useState([]);
-    // const [linkClass, setLinkClass] = useState("linkClass");
 
     function handleChange(event) {
-        if (event.target.name === "title") {
+		if (event.target.name === "title") {
           setTitle(event.target.value);
           setModalBody("The New Energiser " + title + " has been created successfully");
         } else if (event.target.name === "description") {
@@ -52,12 +49,8 @@ const NewEnergiser = (props) => {
                     description: description,
                     difficulty: difficulty,
                 };
-                    // fetch(`../api/name/${title}`)
-                    //     .then((res) => res.json())
-                    //     .then((data) => {
-                    //         console.log("data", data);
-                    //         setOneEnergiser(data);
-                    //     });
+
+				console.log(energiser);
 
                 const requestOptions = {
                     method: "POST",
@@ -86,14 +79,7 @@ const NewEnergiser = (props) => {
 			</Breadcrumb>
 			<div className="d-flex flex-column align-items-center justify-content-center font">
 				<div>
-					{/* <label className="energiserLabel">Name Of Energiser: </label> */}
-					{/* <input
-                className="newEnergiserInput"
-                type="text"
-                name="title"
-                value={title}
-                onChange={handleChange}
-                /> */}
+
 					<TextInput
 						helperText="Can Accept any characters, Letter and special characters"
 						type="text"
@@ -120,7 +106,9 @@ const NewEnergiser = (props) => {
 					<Select
 						defaultValue="placeholder-item"
 						helperText="The Expected time of the new Energiser"
-						id="select-1"
+						name ="time"
+						value= {time}
+                        onChange={handleChange}
 						labelText="Energiser Time: "
 						invalidText="A valid value is required"
 						style={{
@@ -144,7 +132,9 @@ const NewEnergiser = (props) => {
 					<Select
 						defaultValue="placeholder-item"
 						helperText="The difficulty level of the new Energiser"
-						id="select-1"
+						name = "difficulty"
+						value = {difficulty}
+                        onChange={handleChange}
 						labelText="Difficulty: "
 						invalidText="A valid value is required"
 						style={{
@@ -163,8 +153,7 @@ const NewEnergiser = (props) => {
 				</div>
 				<hr></hr>
 				<div>
-				
-              
+
 					<TextArea
 						helperText="Can Accept any characters, Letter and special characters"
 						type="text"
@@ -187,7 +176,7 @@ const NewEnergiser = (props) => {
 
 				<hr></hr>
 				<div className="mt-3 d-flex justify-content-center detail-div text-center">
-	
+
 					<Button
 						className="generate_btn"
 						style={{

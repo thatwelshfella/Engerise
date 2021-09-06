@@ -10,6 +10,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import GenerateDiv from "./pages/GenerateDiv";
 import NewEnergiser from "./pages/NewEnergiser";
+import ManageUsers from "./pages/ManageUsers";
+import ResultsAdmin from "./pages/ResultsAdmin";
 import Profile from "./pages/Profile";
 import "./app.scss";
 
@@ -31,6 +33,8 @@ const App = () => (
 			<Route path="/description" component={Description}></Route>
 			<Route path="/login/" component={Login}></Route>
 			<Route path="/profile/" component={Profile}></Route>
+			<Route path="/manageUsers/" component={ManageUsers}></Route>
+			<Route path="/resultsAdmin/" component={ResultsAdmin}></Route>
 			<Route path="/signup/" component={Signup}></Route>
 		</Switch>
 		<Footer />
