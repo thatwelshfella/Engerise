@@ -173,26 +173,25 @@ const Profile = (props) => {
                 </div>
                 <hr></hr>
                 <hr></hr>
-                <div>
-                    <TextInput
-                        type="password"
-                        name="password"
-                        value={password}
-                        onChange={handleChange}
-                        invalidText="A valid value is required"
-                        labelText="Your Password: "
-                        // helperText={matchPassword}
-                        placeholder="The Password"
-                        style={{
-                            border: "0",
-                            borderRadius: "10px",
-                            textDecoration: "none",
-                            fontSize: "1.3em",
-                            width: "30em",
-                            textAlign: "left",
-                        }}
-                    />
-                </div>
+            <div>
+                <TextInput
+                    type="password"
+                    name="password"
+                    onChange={handleChange}
+                    invalidText="A valid value is required"
+                    labelText="Your Password: "
+                    // helperText={matchPassword}
+                    placeholder="New Password"
+                    style={{
+                        border: "0",
+                        borderRadius: "10px",
+                        textDecoration: "none",
+                        fontSize: "1.3em",
+                        width: "30em",
+                        textAlign: "left",
+                    }}
+                />
+            </div>
                 <hr></hr>
                 <div className="mt-3 d-flex justify-content-center detail-div text-center">
                     <Link to={{
@@ -208,6 +207,7 @@ const Profile = (props) => {
                                 textAlign: "center",
                             }}>Back</Button>
                     </Link>
+		
                     <Button className="generate_btn" style={{
                                 border: "0",
                                 borderRadius: "10px",
