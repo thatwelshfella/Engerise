@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MyModal from "./MyModal";
+import { Breadcrumb, BreadcrumbItem } from "carbon-components-react";
 import { Button, TextInput, Select, SelectItem } from "carbon-components-react";
 
 const Profile = (props) => {
@@ -16,18 +17,13 @@ const Profile = (props) => {
     const [nameUpdated, setNameUpdated] = useState(false);
     const [oldUserName, setOldUserName] = useState("");
     const [userid, setUserid] = useState(0);
+    const [isAdmin, setIsAdmin] = useState(false);
 
 	if (props.location.forload == 1){
 		window.location.reload(false);
 	}
 
-	// useEffect(() => {
-	// 	setUserid(localStorage.getItem("loginUserid"));
-    //     console.log("userd: " , userid);
-	// }, [userid]);
-
-
-    function handleChange(event) {
+	function handleChange(event) {
         if (event.target.name === "userName") {
             setUserName(event.target.value);
           } else if (event.target.name === "email") {
@@ -51,6 +47,7 @@ const Profile = (props) => {
                setClassName(data[0].class);
                setPassword(data[0].password);
                setOldUserName(data[0].user_name);
+               setIsAdmin(data[0].is_admin);
 			});
         }, []);
 
@@ -89,89 +86,93 @@ const Profile = (props) => {
             .catch(() => setErrorModalShow(true));
     }
 	return (
-		<div className="d-flex flex-column align-items-center justify-content-center font">
-            <div>
-                <TextInput
-                    // helperText="Can Accept any characters, Letter and special characters"
-                    type="text"
-                    name="userName"
-                    value={userName}
-                    onChange={handleChange}
-                    invalidText="A valid value is required"
-                    labelText="Your Name: "
-                    placeholder="The new user Name"
-                    style={{
-                        border: "0",
-                        borderRadius: "10px",
-                        textDecoration: "none",
-                        fontSize: "1.3em",
-                        width: "30em",
-                        textAlign: "left",
-                    }}
-                />
-            </div>
-            <hr></hr>
-            <div>
-                <TextInput
-                    // helperText="Can Accept any characters, Letter and special characters"
-                    type="text"
-                    name="email"
-                    value={email}
-                    onChange={handleChange}
-                    invalidText="A valid value is required"
-                    labelText="Your Email: "
-                    placeholder="The new Email"
-                    style={{
-                        border: "0",
-                        borderRadius: "10px",
-                        textDecoration: "none",
-                        fontSize: "1.3em",
-                        width: "30em",
-                        textAlign: "left",
-                    }}
-                />
-            </div>
-            <hr></hr>
-            <div>
-            <Select
-                    name="className"
-                    labelText="Your Class Name: "
-                    value={className}
-                    onChange={handleChange}
-                    invalidText="A valid value is required"
-                    style={{
-                        border: "0",
-                        borderRadius: "10px",
-                        textDecoration: "none",
-                        fontSize: "1.3em",
-                        width: "30em",
-                        textAlign: "left",
-                    }}
-                    >
-                        <SelectItem
-                            text="London Class 7"
-                            value="London Class 7"
-                        />
-                        <SelectItem
-                        text="Birmingham Class 7"
-                        value="Birmingham Class 7"
-                        />
-                        <SelectItem
-                        text="Glasgow Class 7"
-                        value="Glasgow Class 7"
-                        />
-                        <SelectItem
-                        text="Cape Town Class 7"
-                        value="Cape Town Class 7"
-                        />
-                        <SelectItem
-                        text="Gaza Class 7"
-                        value="Gaza Class 7"
-                        />
-                    </Select>
-            </div>
-            <hr></hr>
-            <hr></hr>
+        <div>
+            <Breadcrumb>
+				<BreadcrumbItem href="/">Home</BreadcrumbItem>
+			</Breadcrumb>
+            <div className="d-flex flex-column align-items-center justify-content-center font">
+                <div>
+                    <TextInput
+                        // helperText="Can Accept any characters, Letter and special characters"
+                        type="text"
+                        name="userName"
+                        value={userName}
+                        onChange={handleChange}
+                        invalidText="A valid value is required"
+                        labelText="Your Name: "
+                        placeholder="The new user Name"
+                        style={{
+                            border: "0",
+                            borderRadius: "10px",
+                            textDecoration: "none",
+                            fontSize: "1.3em",
+                            width: "30em",
+                            textAlign: "left",
+                        }}
+                    />
+                </div>
+                <hr></hr>
+                <div>
+                    <TextInput
+                        // helperText="Can Accept any characters, Letter and special characters"
+                        type="text"
+                        name="email"
+                        value={email}
+                        onChange={handleChange}
+                        invalidText="A valid value is required"
+                        labelText="Your Email: "
+                        placeholder="The new Email"
+                        style={{
+                            border: "0",
+                            borderRadius: "10px",
+                            textDecoration: "none",
+                            fontSize: "1.3em",
+                            width: "30em",
+                            textAlign: "left",
+                        }}
+                    />
+                </div>
+                <hr></hr>
+                <div>
+                <Select
+                        name="className"
+                        labelText="Your Class Name: "
+                        value={className}
+                        onChange={handleChange}
+                        invalidText="A valid value is required"
+                        style={{
+                            border: "0",
+                            borderRadius: "10px",
+                            textDecoration: "none",
+                            fontSize: "1.3em",
+                            width: "30em",
+                            textAlign: "left",
+                        }}
+                        >
+                            <SelectItem
+                                text="London Class 7"
+                                value="London Class 7"
+                            />
+                            <SelectItem
+                            text="Birmingham Class 7"
+                            value="Birmingham Class 7"
+                            />
+                            <SelectItem
+                            text="Glasgow Class 7"
+                            value="Glasgow Class 7"
+                            />
+                            <SelectItem
+                            text="Cape Town Class 7"
+                            value="Cape Town Class 7"
+                            />
+                            <SelectItem
+                            text="Gaza Class 7"
+                            value="Gaza Class 7"
+                            />
+                        </Select>
+                </div>
+                <hr></hr>
+                <hr></hr>
             <div>
                 <TextInput
                     type="password"
@@ -191,39 +192,75 @@ const Profile = (props) => {
                     }}
                 />
             </div>
-            <hr></hr>
-            <div className="mt-3 d-flex justify-content-center detail-div text-center">
-                <Link to={{
-                    pathname: "/",
-                    searchCriteria: null,
-                }} style={{ textDecoration: "none" }}>
+                <hr></hr>
+                <div className="mt-3 d-flex justify-content-center detail-div text-center">
+                    <Link to={{
+                        pathname: "/",
+                        searchCriteria: null,
+                    }} style={{ textDecoration: "none" }}>
+                        <Button className="generate_btn" style={{
+                                border: "0",
+                                borderRadius: "10px",
+                                fontSize: "1.3em",
+                                background: "#ED4343",
+                                marginRight: "1.3em",
+                                textAlign: "center",
+                            }}>Back</Button>
+                    </Link>
+		
                     <Button className="generate_btn" style={{
-							border: "0",
-							borderRadius: "10px",
-							fontSize: "1.3em",
-							background: "#ED4343",
-                            marginRight: "1.3em",
-							textAlign: "center",
-						}}>Back</Button>
-                </Link>
-                <Button className="generate_btn" style={{
-							border: "0",
-							borderRadius: "10px",
-							textDecoration: "none",
-							fontSize: "1.3em",
-							background: "#ED4343",
-							textAlign: "center",
-						}} onClick={updateUser}>Update
-                </Button>
+                                border: "0",
+                                borderRadius: "10px",
+                                textDecoration: "none",
+                                fontSize: "1.3em",
+                                background: "#ED4343",
+                                textAlign: "center",
+                            }} onClick={updateUser}>Update
+                    </Button>
+                </div>
+                {isAdmin ? (
+                    <div>
+                    <hr></hr>
+                    <br></br>
+                        <Link to={{
+                        pathname: "/manageUsers",
+                        searchCriteria: null,
+                    }} style={{ textDecoration: "none" }}>
+                        <Button className="generate_btn" style={{
+                                border: "0",
+                                borderRadius: "10px",
+                                fontSize: "1.3em",
+                                background: "#ED4343",
+                                marginRight: "1.3em",
+                                textAlign: "center",
+                            }}>Manage Users</Button>
+                    </Link>
+                    <Link to={{
+                        pathname: "/resultsAdmin",
+                        searchCriteria: null,
+                    }} style={{ textDecoration: "none" }}>
+                        <Button className="generate_btn" style={{
+                                border: "0",
+                                borderRadius: "10px",
+                                fontSize: "1.3em",
+                                background: "#ED4343",
+                                marginRight: "1.3em",
+                                textAlign: "center",
+                            }}>Manage Energisers</Button>
+                    </Link>
+                    </div>
+                ): (
+                    <div></div>
+                )}
+                <MyModal body = "Your Information has been updated successfully" nameupdated = {nameUpdated} header = "Update User Information" show={modalShow}
+                    onHide={() => setModalShow(false)} />
+                <MyModal body = "Some Data is missing, Please fill the fields!" header = "Missing Data" show={missingModalShow}
+                    onHide={() => setMissingModalShow(false)} />
+                <MyModal body = "The Password is not matched with the Repeated Password!" header = "Wrong Password" show={matchedModal}
+                    onHide={() => setMatchedModal(false)} />
+                <MyModal body = "There is an error in the provided information." header = "Error Data" show={errorModalShow}
+                    onHide={() => setErrorModalShow(false)} />
             </div>
-            <MyModal body = "Your Information has been updated successfully" nameupdated = {nameUpdated} header = "Update User Information" show={modalShow}
-                onHide={() => setModalShow(false)} />
-            <MyModal body = "Some Data is missing, Please fill the fields!" header = "Missing Data" show={missingModalShow}
-                onHide={() => setMissingModalShow(false)} />
-            <MyModal body = "The Password is not matched with the Repeated Password!" header = "Wrong Password" show={matchedModal}
-                onHide={() => setMatchedModal(false)} />
-            <MyModal body = "There is an error in the provided information." header = "Error Data" show={errorModalShow}
-                onHide={() => setErrorModalShow(false)} />
         </div>
 	);
 };

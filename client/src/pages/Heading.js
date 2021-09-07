@@ -36,11 +36,6 @@ function Heading() {
 
 		localStorage.removeItem("loginUserid");
 		localStorage.removeItem("loginUsername");
-		window.location.reload(false);
-	}
-
-	function userProfile() {
-		console.log("Hi ", username);
 	}
 
   return (
@@ -65,6 +60,7 @@ function Heading() {
 								}}>Welcome {username}</h6>
 						{userid ? (<div><Link to={{
 									pathname: "/",
+									forload: 1,
 									searchCriteria: null,
 								}} style={{ textDecoration: "none" }}>
 											<FaSignOutAlt onClick={logoutUser} title="Log Out" size={25} style={{
@@ -79,7 +75,7 @@ function Heading() {
 											pathname: "/profile",
 											searchCriteria: null,
 										}} style={{ textDecoration: "none" }}>
-												<FaRegUser onClick={userProfile} title= {username+" Profile"} size={25} style={{
+												<FaRegUser title= {username+" Profile"} size={25} style={{
 											marginTop: "2em",
 											marginRight: "3em",
 											cursor: "pointer",
@@ -115,11 +111,17 @@ function Heading() {
 											</FaCreativeCommonsBy>
 								</Link></div>
 						)}
-						<a href="https://energisers.herokuapp.com">
+						{/* <a href="/">
 							<img className="elogo" src={energise} alt="Energise Logo" />
-						</a>
+						</a> */}
+						<Link to={{
+									pathname: "/",
+									userid: userid,
+									username: username,
+								}}>
+							<img className="elogo" src={energise} alt="Energise Logo" />{" "}
+						</Link>
 						</div>
-
 					</div>
 					<hr></hr>
 				</div>

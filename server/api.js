@@ -334,4 +334,53 @@ router.get("/profile/:userid", function (req, res) {
 });
 
 
+router.get("/allUsers", function (req, res) {
+	pool
+		.query("SELECT * FROM profile_table ORDER BY id")
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+
+
+router.put("/userAdmin", function (req, res) {
+	const user = req.body;
+	pool
+		.query("UPDATE profile_table SET  is_admin = $1 WHERE id = $2", [
+			user.val,
+			user.id,
+		])
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+
+
+router.delete("/delUser", function (req, res) {
+	const user = req.body;
+	pool
+		.query("delete from profile_table WHERE id = $1", [
+			user.id,
+		])
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+
+
+router.delete("/delEnergiser", function (req, res) {
+	const user = req.body;
+	pool
+		.query("delete from energisers WHERE id = $1", [
+			user.id,
+		])
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+
+
+router.get("/enrgiserNames", function (req, res) {
+	pool
+		.query("SELECT id, name FROM energisers")
+		.then((result) => res.json(result.rows))
+		.catch((e) => console.error(e));
+});
+
 export default router;
