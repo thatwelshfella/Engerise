@@ -108,7 +108,7 @@ const ResultsTable = (props) => {
 	}
 
 	return (
-		<div>
+		<div className="resultsTableRoot">
 			<MyModal
 				body="Sorry! There is no match to your search criteria."
 				header="Search an Energiser"
