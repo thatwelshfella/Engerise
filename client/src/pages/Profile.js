@@ -171,7 +171,7 @@ const Profile = (props) => {
                             />
                         </Select>
                 </div>
-                <hr></hr>
+                {/* <hr></hr>
                 <hr></hr>
             <div>
                 <TextInput
@@ -191,7 +191,7 @@ const Profile = (props) => {
                         textAlign: "left",
                     }}
                 />
-            </div>
+            </div> */}
                 <hr></hr>
                 <div className="mt-3 d-flex justify-content-center detail-div text-center">
                     <Link to={{

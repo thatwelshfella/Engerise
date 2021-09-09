@@ -216,18 +216,11 @@ router.post("/signup", function (req, res) {
 
 router.put("/updateuser", function (req, res) {
 	const user = req.body;
-	let hashSalt = creepy(user.password);
+	// let hashSalt = creepy(user.password);
 	pool
 		.query(
-			"UPDATE profile_table SET user_name = $1, class = $2, email = $3, password = $4, salt = $6 WHERE id = $5",
-			[
-				user.name,
-				user.class,
-				user.email,
-				hashSalt.hash,
-				user.user_id,
-				hashSalt.salt,
-			]
+			"UPDATE profile_table SET user_name = $1, class = $2, email = $3 WHERE id = $4",
+			[user.name, user.class, user.email, user.user_id]
 		)
 		.then((result) => res.json(result.rows))
 		.catch((e) => console.error(e));
