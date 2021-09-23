@@ -46,12 +46,12 @@ function GenerateDiv(props) {
 			</div>
 			<br />
 			<div className="row justify-content-center">
-				<Tags username= {props.username} userid={props.userid} />
+				<Tags username={props.username} userid={props.userid} />
 			</div>
 			<br />
 			<div className="d-flex justify-content-center">
 				<p className="randomListText">
-					Do not know where to start? Try a{" "}
+					Don&apos;t know where to start? Try a{" "}
 					<Link
 						to={{
 							pathname: "/results",

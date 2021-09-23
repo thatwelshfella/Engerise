@@ -44,83 +44,132 @@ function Heading() {
 				<div className="row">
 					<div className="col-12 d-flex justify-content-between align-items-center">
 						<div>
-						<Link to={{
+							<Link
+								to={{
 									pathname: "/",
 									userid: userid,
 									username: username,
-								}}>
-							<img className="logo" src={cyf_brand} alt="CYF Logo" />{" "}
-						</Link>
+								}}
+							>
+								<img className="elogo mt-1" src={energise} alt="Energise Logo" />{" "}
+							</Link>
 						</div>
 						{/* <h2>{username}</h2> */}
 						<div className="d-flex justify-content-end">
-						<h6 style={{
-									marginTop: "2em",
+							<h6
+								style={{
+									marginTop: "0.2em",
 									marginRight: "3em",
-								}}>Welcome {username}</h6>
-						{userid ? (<div><Link to={{
-									pathname: "/",
-									forload: 1,
-									searchCriteria: null,
-								}} style={{ textDecoration: "none" }}>
-											<FaSignOutAlt onClick={logoutUser} title="Log Out" size={25} style={{
-												marginTop: "2em",
+								}}
+							>
+								Welcome {username}
+							</h6>
+							{userid ? (
+								<div>
+									<Link
+										to={{
+											pathname: "/",
+											forload: 1,
+											searchCriteria: null,
+										}}
+										style={{ textDecoration: "none" }}
+									>
+										<FaSignOutAlt
+											onClick={logoutUser}
+											title="Log Out"
+											size={25}
+											style={{
+												marginTop: "0em",
 												marginRight: "3em",
 												cursor: "pointer",
 											}}
-												onMouseOver={({ target })=>target.style.color="red"}
-												onMouseOut={({ target })=>target.style.color="black"}>
-											</FaSignOutAlt>
-										</Link><Link to={{
+											onMouseOver={({ target }) => (target.style.color = "red")}
+											onMouseOut={({ target }) =>
+												(target.style.color = "black")
+											}
+										></FaSignOutAlt>
+									</Link>
+									<Link
+										to={{
 											pathname: "/profile",
 											searchCriteria: null,
-										}} style={{ textDecoration: "none" }}>
-												<FaRegUser title= {username+" Profile"} size={25} style={{
-											marginTop: "2em",
-											marginRight: "3em",
-											cursor: "pointer",
 										}}
-												onMouseOver={({ target })=>target.style.color="red"}
-												onMouseOut={({ target })=>target.style.color="black"}></FaRegUser>
-											</Link>
-											{/* </div> */}
-										</div>
-										) : (<div><Link to={{
-									pathname: "/login",
-									searchCriteria: null,
-								}} style={{ textDecoration: "none" }}>
-										<FaSignInAlt title="Login" size={25} style={{
-												marginTop: "2em",
+										style={{ textDecoration: "none" }}
+									>
+										<FaRegUser
+											title={username + " Profile"}
+											size={25}
+											style={{
+												marginTop: "0em",
 												marginRight: "3em",
 												cursor: "pointer",
 											}}
-												onMouseOver={({ target })=>target.style.color="red"}
-												onMouseOut={({ target })=>target.style.color="black"}>
-											</FaSignInAlt>
-								</Link><Link to={{
-									pathname: "/signup",
-									searchCriteria: null,
-								}} style={{ textDecoration: "none" }}>
-										<FaCreativeCommonsBy title="Sign up" size={25} style={{
-												marginTop: "2em",
+											onMouseOver={({ target }) => (target.style.color = "red")}
+											onMouseOut={({ target }) =>
+												(target.style.color = "black")
+											}
+										></FaRegUser>
+									</Link>
+									{/* </div> */}
+								</div>
+							) : (
+								<div>
+									<Link
+										to={{
+											pathname: "/login",
+											searchCriteria: null,
+										}}
+										style={{ textDecoration: "none" }}
+									>
+										<FaSignInAlt
+											title="Login"
+											size={25}
+											style={{
+												marginTop: "0em",
 												marginRight: "3em",
 												cursor: "pointer",
 											}}
-												onMouseOver={({ target })=>target.style.color="red"}
-												onMouseOut={({ target })=>target.style.color="black"}>
-											</FaCreativeCommonsBy>
-								</Link></div>
-						)}
-						{/* <a href="/">
+											onMouseOver={({ target }) => (target.style.color = "red")}
+											onMouseOut={({ target }) =>
+												(target.style.color = "black")
+											}
+										></FaSignInAlt>
+									</Link>
+									<Link
+										to={{
+											pathname: "/signup",
+											searchCriteria: null,
+										}}
+										style={{ textDecoration: "none" }}
+									>
+										<FaCreativeCommonsBy
+											title="Sign up"
+											size={25}
+											style={{
+												marginTop: "0em",
+												marginRight: "3em",
+												cursor: "pointer",
+											}}
+											onMouseOver={({ target }) => (target.style.color = "red")}
+											onMouseOut={({ target }) =>
+												(target.style.color = "black")
+											}
+										></FaCreativeCommonsBy>
+									</Link>
+								</div>
+							)}
+							{/* <a href="/">
 							<img className="elogo" src={energise} alt="Energise Logo" />
 						</a> */}
-						<Link to={{
+							{/* <Link
+								to={{
 									pathname: "/",
 									userid: userid,
 									username: username,
-								}}>
-							<img className="elogo" src={energise} alt="Energise Logo" />{" "}
-						</Link>
+								}}
+							>
+								<img className="logo" src={cyf_brand} alt="CYF Logo" />{" "}
+							</Link> */}
 						</div>
 					</div>
 					<hr></hr>
