@@ -35,7 +35,7 @@ function Footer() {
 						<div className="d-flex flex-column justify-content-evenly">
 							Built by the Trainees at{" "}
 							<img
-								className="logo float-right"
+								className="footerLogo float-right"
 								src={cyf_brand}
 								alt="CYF Logo"
 							/>

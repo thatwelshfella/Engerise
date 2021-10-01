@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
-const TopEnergisers = (props) => {
+const TopEnergisers = () => {
 	const [energiser, setEnergiser] = useState([]);
 
 	useEffect(() => {
@@ -12,31 +11,19 @@ const TopEnergisers = (props) => {
 			});
 	}, []);
 
-
 	return (
 		<div className="pt-2 border border-dark">
-			<h4
-				className="text-center WhatIsAnEnergiser"
-			>
+			<h4 className="text-center WhatIsAnEnergiser">
 				Top Favourite Energisers
 			</h4>
 			<table className="container table">
-				<thead className=""></thead>
+				<thead></thead>
 				{energiser.map((item) => (
 					<tbody key={item.id}>
 						<tr>
 							<td className="topEnergiserName">
 								<a href={`/description?id=${item.id}`}>{item.name}</a>
 							</td>
-							{/* <td>
-								<td className="tag">{item.tag}</td>
-							</td>
-							<td>
-								<td className="tag">{item.time}</td>
-							</td>
-							<td>{item.external ? <td>Yes</td> : <td>No</td>}</td>
-							<td>{item.upvote}</td>
-							<td>{item.downvote}</td> */}
 						</tr>
 					</tbody>
 				))}
